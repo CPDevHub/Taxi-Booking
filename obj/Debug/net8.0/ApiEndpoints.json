@@ -1,0 +1,66 @@
+[
+  {
+    "ContainingType": "Taxi_Booking.Controllers.AuthenticationController",
+    "Method": "DriverLogin",
+    "RelativePath": "api/v1/auth/driver-login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDetails",
+        "Type": "Taxi_Booking.DTO.Authentication.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Taxi_Booking.Controllers.AuthenticationController",
+    "Method": "DriverSignup",
+    "RelativePath": "api/v1/auth/driver-signup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signupDetails",
+        "Type": "Taxi_Booking.DTO.Authentication.DriverRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Taxi_Booking.Controllers.AuthenticationController",
+    "Method": "PassengerLogin",
+    "RelativePath": "api/v1/auth/passenger-login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDetails",
+        "Type": "Taxi_Booking.DTO.Authentication.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Taxi_Booking.Controllers.AuthenticationController",
+    "Method": "PassengerSignup",
+    "RelativePath": "api/v1/auth/passenger-signup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signupDetails",
+        "Type": "Taxi_Booking.DTO.Authentication.PassengerRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
