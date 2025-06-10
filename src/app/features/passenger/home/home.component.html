@@ -1,0 +1,30 @@
+<kendo-appbar position="top">
+  <kendo-appbar-section>
+    <span class="k-appbar-title">Passenger Panel</span>
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer></kendo-appbar-spacer>
+
+  <kendo-appbar-section>
+    <button kendoButton routerLink="history" look="flat">History</button>
+    <button kendoButton routerLink="settings" look="flat">Settings</button>
+  </kendo-appbar-section>
+</kendo-appbar>
+
+<div *ngIf="rideDetails" class="card p-4 shadow rounded">
+  <h3>🚖 Ride Details</h3>
+  <p><strong>Ride ID:</strong> {{ rideDetails.rideId }}</p>
+  <p><strong>Driver Name:</strong> {{ rideDetails.driverName }}</p>
+  <p>
+    <strong>Vehicle:</strong> {{ rideDetails.vehicleModel }} -
+    {{ rideDetails.vehicleNumber }}
+  </p>
+
+  <h4>Pickup Location:</h4>
+  <p>InTimeTec</p>
+
+  <h4>Drop-Off Location:</h4>
+  <p>InTimeTec</p>
+</div>
+
+<router-outlet></router-outlet>

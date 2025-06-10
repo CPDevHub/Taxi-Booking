@@ -1,0 +1,28 @@
+<kendo-stacklayout
+  orientation="vertical"
+  style="width: 300px; margin: auto; padding: 2rem; gap: 1rem"
+>
+  <form [formGroup]="reactiveForm" (ngSubmit)="onPassengerSignup()">
+    <kendo-floatinglabel text="Name">
+      <input kendoTextBox formControlName="name" />
+    </kendo-floatinglabel>
+
+    <kendo-floatinglabel text="Email">
+      <input kendoTextBox formControlName="email" />
+    </kendo-floatinglabel>
+
+    <kendo-floatinglabel text="Password">
+      <input kendoTextBox type="password" formControlName="password" />
+    </kendo-floatinglabel>
+
+    <kendo-floatinglabel text="Avatar">
+      <input kendoTextBox formControlName="avatarUrl" />
+    </kendo-floatinglabel>
+
+    <kendo-floatinglabel text="Contact Number">
+      <input kendoTextBox formControlName="contactNumber" />
+    </kendo-floatinglabel>
+
+    <button kendoButton themeColor="primary" type="submit">signup</button>
+  </form>
+</kendo-stacklayout>

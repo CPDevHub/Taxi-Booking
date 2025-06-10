@@ -1,0 +1,26 @@
+<kendo-appbar position="top">
+  <kendo-appbar-section>
+    <span class="k-appbar-title">Driver Panel</span>
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer></kendo-appbar-spacer>
+
+  <kendo-appbar-section>
+    <button kendoButton routerLink="dashboard" look="flat">Dashboard</button>
+    <button kendoButton routerLink="settings" look="flat">Settings</button>
+  </kendo-appbar-section>
+</kendo-appbar>
+
+<kendo-dialog *ngIf="showRideRequest" title="New Ride Request">
+  <p><strong>Pickup:</strong> {{ rideRequest?.pickupLocation?.address }}</p>
+  <p><strong>Drop-off:</strong> {{ rideRequest?.dropOffLocation?.address }}</p>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="acceptRide()" themeColor="primary">
+      Accept
+    </button>
+    <button kendoButton (click)="rejectRide()">Reject</button>
+  </kendo-dialog-actions>
+</kendo-dialog>
+
+<router-outlet></router-outlet>

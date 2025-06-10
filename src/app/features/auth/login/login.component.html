@@ -1,0 +1,16 @@
+<kendo-stacklayout
+  orientation="vertical"
+  style="width: 300px; margin: auto; padding: 2rem; gap: 1rem"
+>
+  <form [formGroup]="reactiveForm" (ngSubmit)="onLogin()">
+    <kendo-floatinglabel text="Email">
+      <input kendoTextBox formControlName="email" />
+    </kendo-floatinglabel>
+
+    <kendo-floatinglabel text="Password">
+      <input kendoTextBox type="password" formControlName="password" />
+    </kendo-floatinglabel>
+
+    <button kendoButton themeColor="primary" type="submit">Login</button>
+  </form>
+</kendo-stacklayout>
