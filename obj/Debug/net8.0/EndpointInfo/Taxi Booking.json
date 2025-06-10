@@ -128,10 +128,69 @@
           }
         }
       }
+    },
+    "/api/v1/auth/is-authenticated": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/ride/book": {
+      "post": {
+        "tags": [
+          "Ride"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRideRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRideRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRideRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "CreateRideRequestDto": {
+        "type": "object",
+        "properties": {
+          "pickupLocation": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "dropOffLocation": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "passengerId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "DriverRegisterDto": {
         "required": [
           "avatarUrl",
@@ -175,6 +234,29 @@
             "type": "string"
           },
           "vehicleModel": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Location": {
+        "required": [
+          "address",
+          "latitude",
+          "longitude"
+        ],
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "address": {
             "minLength": 1,
             "type": "string"
           }

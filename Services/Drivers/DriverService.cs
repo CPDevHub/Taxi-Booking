@@ -15,11 +15,11 @@ namespace Taxi_Booking.Services.Drivers
     {
 
         private readonly IDriverRepository _driverRepository;
-        private readonly ILogger<DriverRepository> _logger;
+        private readonly ILogger<DriverService> _logger;
         private readonly PasswordHasher _passwordHasher;
         private readonly IVehicleService _vehicleService;
         private readonly IMapper _mapper;
-        public DriverService(IDriverRepository driverRepository, ILogger<DriverRepository> logger, PasswordHasher passwordHasher, IVehicleService vehicleService, IMapper mapper)
+        public DriverService(IDriverRepository driverRepository, ILogger<DriverService> logger, PasswordHasher passwordHasher, IVehicleService vehicleService, IMapper mapper)
         {
             _driverRepository = driverRepository;
             _logger = logger;
@@ -28,15 +28,21 @@ namespace Taxi_Booking.Services.Drivers
             _mapper = mapper;
         }
 
-        public async Task<Driver> GetDriverByEmailAsync(string Email)
+        public async Task<Driver> GetDriverByEmailAsync(string email)
         {
-            return await _driverRepository.GetDriverByEmailAsync(Email);
+            _logger.LogInformation("Service: Retrieving driver by email: {Email}", email);
+            return await _driverRepository.GetDriverByEmailAsync(email);
         }
         public async Task<Boolean> CreateDriverAsync(DriverRegisterDto driver)
         {
+            _logger.LogInformation("Service: Attempting to register driver with email: {Email}", driver.Email);
             var driverInDb = await GetDriverByEmailAsync(driver.Email);
-            if (driverInDb != null) throw new AlreadyExistsException("User with this email already exists.");
-
+            if (driverInDb != null)
+            {
+                _logger.LogWarning("Service: Driver already exists with email: {Email}", driver.Email);
+                throw new AlreadyExistsException("User with this email already exists.");
+            }
+            _logger.LogInformation("Service: Registering vehicle with number: {Number}", driver.VehicleNumber);
             Vehicle vehicleRegistered=await _vehicleService.RegisterVechicle(new VehicleDto { Number=driver.VehicleNumber,Model=driver.VehicleModel,Type=driver.DriverVehicleType});
 
             Driver driverToRegister = _mapper.Map<Driver>(driver);
@@ -44,13 +50,28 @@ namespace Taxi_Booking.Services.Drivers
             driverToRegister.DriverVehicle = vehicleRegistered;
             driverToRegister.VehicleId = vehicleRegistered.Id;
             driverToRegister.Status = DriverStatus.Unavailable;
-
+            _logger.LogInformation("Service: Saving new driver with email: {Email}", driver.Email);
             return await _driverRepository.CreateDriverAsync(driverToRegister);
         }
 
         public Task<Boolean> UpdateDriverStatus(DriverStatus status, int? driverId)
         {
+            _logger.LogInformation("Service: Updating driver status to {Status} for driver ID: {DriverId}", status, driverId);
             return _driverRepository.UpdateDriverStatus(status, driverId);
+        }
+
+        public Task<Driver> GetDriverByIdAsync(int driverId)
+        {
+            return _driverRepository.GetDriverByIdAsync(driverId);
+        }
+        public async Task<Boolean> UpdateDriverLocation(int driverId, double latitude, double longitude)
+        {
+            return await _driverRepository.UpdateDriverLocation(driverId, latitude, longitude);
+        }
+
+        public async Task<Driver> GetDriverWithVehicleByIdAsync(int driverId)
+        {
+            return await _driverRepository.GetDriverWithVehicleByIdAsync(driverId);
         }
     }
 }

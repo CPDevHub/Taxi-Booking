@@ -16,6 +16,8 @@ namespace Taxi_Booking.Models.Entities
         public string Email { get; set; }
         public string PasswordHash { get; set; }
 
+        public DriverLocation Location { get; set; }
+
         public DriverStatus Status { get; set; }
         public int VehicleId { get; set; }
         public Vehicle DriverVehicle { get; set; }

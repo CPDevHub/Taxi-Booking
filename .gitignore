@@ -1,0 +1,24 @@
+# Ignore Visual Studio folder
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore debug info
+*.pdb
+
+# Ignore publish output
+publish/
+out/
+
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore Rider IDE files if applicable
+.idea/

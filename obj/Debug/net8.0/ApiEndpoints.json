@@ -33,6 +33,16 @@
   },
   {
     "ContainingType": "Taxi_Booking.Controllers.AuthenticationController",
+    "Method": "isAuthenticated",
+    "RelativePath": "api/v1/auth/is-authenticated",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Taxi_Booking.Controllers.AuthenticationController",
     "Method": "PassengerLogin",
     "RelativePath": "api/v1/auth/passenger-login",
     "HttpMethod": "POST",
@@ -58,6 +68,22 @@
       {
         "Name": "signupDetails",
         "Type": "Taxi_Booking.DTO.Authentication.PassengerRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Taxi_Booking.Controllers.RideController",
+    "Method": "BookRide",
+    "RelativePath": "api/v1/ride/book",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rideRequest",
+        "Type": "Taxi_Booking.DTO.CreateRideRequestDto",
         "IsRequired": true
       }
     ],

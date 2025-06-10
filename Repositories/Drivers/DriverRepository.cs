@@ -19,15 +19,17 @@ namespace Taxi_Booking.Repositories.Drivers
             _mapper = mapper;
             
         }
-        public async Task<Driver> GetDriverByEmailAsync(string Email)
+        public async Task<Driver> GetDriverByEmailAsync(string email)
         {
-            return await _taxiContext.Driver.FirstOrDefaultAsync(driver=>driver.Email==Email);
+            _logger.LogInformation("Fetching driver by email: {Email}", email);
+            return await _taxiContext.Driver.FirstOrDefaultAsync(driver=>driver.Email==email);
         }
 
         public async Task<Boolean> CreateDriverAsync(Driver driver)
         {
             await _taxiContext.Driver.AddAsync(driver);
             await _taxiContext.SaveChangesAsync();
+            _logger.LogInformation("Driver created with ID: {DriverId}, Email: {Email}", driver.Id, driver.Email);
             return true;
         }
 
@@ -38,8 +40,37 @@ namespace Taxi_Booking.Repositories.Drivers
             {
                 driver.Status = status;
                 await _taxiContext.SaveChangesAsync();
+                _logger.LogInformation("Updated status to {Status} for driver ID: {DriverId}", status, driver.Id);
+            
             }
             return true;
         }
+
+        public async Task<Driver> GetDriverByIdAsync(int driverId)
+        {
+            return await _taxiContext.Driver.FindAsync(driverId);
+        }
+
+        public async Task<Boolean> UpdateDriverLocation(int driverId, double latitude, double longitude)
+        {
+            var driver = await _taxiContext.Driver.FindAsync(driverId);
+            if (driver == null)
+                return false;
+
+            if (driver.Location == null)
+                driver.Location = new DriverLocation();
+
+            driver.Location.Latitude = latitude;
+            driver.Location.Longitude = longitude;
+
+            await _taxiContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<Driver> GetDriverWithVehicleByIdAsync(int driverId)
+        {
+            return await _taxiContext.Driver.Include(d => d.DriverVehicle).FirstOrDefaultAsync(d => d.Id == driverId);
+        }
+
     }
 }

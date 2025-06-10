@@ -10,9 +10,9 @@ namespace Taxi_Booking.Repositories.Vehicles
     public class VehicleRepository:IVehicleRepository
     {
         private readonly TaxiBookingContext _taxiContext;
-        private readonly ILogger<PassengerRepository> _logger;
+        private readonly ILogger<VehicleRepository> _logger;
         private readonly IMapper _mapper;
-        public VehicleRepository(TaxiBookingContext taxiContext, ILogger<PassengerRepository> logger, IMapper mapper)
+        public VehicleRepository(TaxiBookingContext taxiContext, ILogger<VehicleRepository> logger, IMapper mapper)
         {
             _taxiContext = taxiContext;
             _logger = logger;
@@ -23,10 +23,12 @@ namespace Taxi_Booking.Repositories.Vehicles
             var newVehicle = _mapper.Map<Vehicle>(vehicle);
             await _taxiContext.Vehicle.AddAsync(newVehicle);
             await _taxiContext.SaveChangesAsync();
+            _logger.LogInformation("Vehicle registered successfully with number: {Number}, ID: {VehicleId}", newVehicle.Number, newVehicle.Id);
             return newVehicle;
         }
         public async Task<Vehicle> GetVehicleByNumber(string number)
         {
+            _logger.LogInformation("Fetching vehicle by number: {Number}", number);
             return await _taxiContext.Vehicle.FirstOrDefaultAsync(vehicle => vehicle.Number == number);
         }
     }

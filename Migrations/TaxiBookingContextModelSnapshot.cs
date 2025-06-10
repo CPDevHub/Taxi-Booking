@@ -122,7 +122,7 @@ namespace Taxi_Booking.Migrations
                         .HasColumnType("float")
                         .HasDefaultValue(0.0);
 
-                    b.Property<int>("DriverId")
+                    b.Property<int?>("DriverId")
                         .HasColumnType("int");
 
                     b.Property<int>("PassengerId")
@@ -186,16 +186,36 @@ namespace Taxi_Booking.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Taxi_Booking.Models.Entities.DriverLocation", "Location", b1 =>
+                        {
+                            b1.Property<int>("DriverId")
+                                .HasColumnType("int");
+
+                            b1.Property<double>("Latitude")
+                                .HasColumnType("float");
+
+                            b1.Property<double>("Longitude")
+                                .HasColumnType("float");
+
+                            b1.HasKey("DriverId");
+
+                            b1.ToTable("Driver");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DriverId");
+                        });
+
                     b.Navigation("DriverVehicle");
+
+                    b.Navigation("Location")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Taxi_Booking.Models.Entities.Ride", b =>
                 {
                     b.HasOne("Taxi_Booking.Models.Entities.Driver", "RideDriver")
                         .WithMany("DriverRides")
-                        .HasForeignKey("DriverId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DriverId");
 
                     b.HasOne("Taxi_Booking.Models.Entities.Passenger", "RidePassenger")
                         .WithMany("PassengerRides")

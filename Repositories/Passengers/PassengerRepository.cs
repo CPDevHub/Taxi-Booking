@@ -18,15 +18,17 @@ namespace Taxi_Booking.Repositories.Passengers
             _mapper = mapper;
         }
 
-        public async Task<Passenger> GetPassengerByEmailAsync(string Email)
+        public async Task<Passenger> GetPassengerByEmailAsync(string email)
         {
-            return await _taxiContext.Passenger.FirstOrDefaultAsync(passenger => passenger.Email == Email);
+            _logger.LogInformation("Fetching passenger by email: {Email}", email);
+            return await _taxiContext.Passenger.FirstOrDefaultAsync(passenger => passenger.Email == email);
         }
         public async Task<Boolean> CreatePassengerAsync(PassengerRegisterDto passenger)
         {
             var newPassenger = _mapper.Map<Passenger>(passenger);
             await _taxiContext.Passenger.AddAsync(newPassenger);
             await _taxiContext.SaveChangesAsync();
+            _logger.LogInformation("Passenger created with ID: {PassengerId}, Email: {Email}", newPassenger.Id, newPassenger.Email);
             return true;
         }
     }

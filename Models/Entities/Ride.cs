@@ -14,8 +14,8 @@ namespace Taxi_Booking.Models.Entities
         public Location PickupLocation { get; set; }
         public Location DropOffLocation { get; set; }
         public int PassengerId { get; set; }
-        public int DriverId { get; set; }
         public Passenger RidePassenger { get; set; }
-        public Driver RideDriver { get; set; }
+        public int ?DriverId { get; set; }
+        public Driver ?RideDriver { get; set; }
     }
 }

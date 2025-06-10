@@ -19,15 +19,23 @@ namespace Taxi_Booking.Services.Passengers
         }
         public async Task<Passenger> GetPassengerByEmailAsync(string email)
         {
+            _logger.LogInformation("Service: Fetching passenger with email: {Email}", email);
             return await _passengerRepository.GetPassengerByEmailAsync(email);
         }
         public async Task<Boolean> CreatePassengerAsync(PassengerRegisterDto passenger)
         {
+            _logger.LogInformation("Service: Attempting to register new passenger with email: {Email}", passenger.Email);
             var passengerInDb=await  GetPassengerByEmailAsync(passenger.Email);
-            if (passengerInDb!=null) throw new AlreadyExistsException("User with this email already exists.");
+            if (passengerInDb != null)
+            {
+                _logger.LogWarning("Service: Passenger already exists with email: {Email}", passenger.Email);
+                throw new AlreadyExistsException("User with this email already exists.");
+            }
            
             passenger.Password = _passwordHasher.Hash(passenger.Password);
-            return await _passengerRepository.CreatePassengerAsync(passenger);
+            var result=await _passengerRepository.CreatePassengerAsync(passenger);
+            _logger.LogInformation("Service: Passenger successfully registered with email: {Email}", passenger.Email);
+            return result;
         }
     }
 }
