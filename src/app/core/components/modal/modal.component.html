@@ -1,0 +1,30 @@
+<kendo-dialog (close)="onClose()" style="width: 600px">
+  <kendo-dialog-titlebar>
+    <span>Cancel Ride</span>
+  </kendo-dialog-titlebar>
+
+  <div class="k-dialog-content">
+    <p class="dialog-question">Why do you want to cancel?</p>
+    <ul class="reason-list">
+      <li
+        *ngFor="let option of cancellationReasons"
+        (click)="selectReason(option)"
+        [class.selected]="option === selectedReason"
+      >
+        {{ option }}
+      </li>
+    </ul>
+  </div>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="onClose()">Close</button>
+    <button
+      kendoButton
+      themeColor="error"
+      [disabled]="!selectedReason"
+      (click)="onSubmit()"
+    >
+      Cancel Ride
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>

@@ -1,0 +1,30 @@
+.dialog-question {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.reason-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reason-list li {
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  background-color: #f3f4f6;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.reason-list li:hover {
+  background-color: #e0e7ff;
+}
+
+.reason-list li.selected {
+  background-color: #c7d2fe;
+  border-color: #4f46e5;
+  font-weight: bold;
+}

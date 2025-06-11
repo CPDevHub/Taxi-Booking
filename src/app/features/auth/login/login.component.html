@@ -1,16 +1,54 @@
-<kendo-stacklayout
-  orientation="vertical"
-  style="width: 300px; margin: auto; padding: 2rem; gap: 1rem"
->
-  <form [formGroup]="reactiveForm" (ngSubmit)="onLogin()">
-    <kendo-floatinglabel text="Email">
-      <input kendoTextBox formControlName="email" />
-    </kendo-floatinglabel>
+<div class="login-container">
+  <div class="login-card">
+    <h2 class="login-title">
+      {{ userType === "passenger" ? "Passenger Login" : "Driver Login" }}
+    </h2>
 
-    <kendo-floatinglabel text="Password">
-      <input kendoTextBox type="password" formControlName="password" />
-    </kendo-floatinglabel>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onLogin()">
+      <kendo-stacklayout orientation="vertical" class="login-form">
+        <kendo-floatinglabel text="Email">
+          <input kendoTextBox formControlName="email" />
+        </kendo-floatinglabel>
 
-    <button kendoButton themeColor="primary" type="submit">Login</button>
-  </form>
-</kendo-stacklayout>
+        <kendo-floatinglabel text="Password">
+          <input kendoTextBox type="password" formControlName="password" />
+        </kendo-floatinglabel>
+
+        <button
+          kendoButton
+          themeColor="primary"
+          type="submit"
+          class="login-button"
+        >
+          Login
+        </button>
+      </kendo-stacklayout>
+    </form>
+
+    <div class="login-links">
+      <p>
+        {{
+          userType === "passenger"
+            ? "Are you a Driver?"
+            : "Are you a Passenger?"
+        }}
+        <a
+          [routerLink]="
+            userType === 'passenger' ? '/driver-login' : '/passenger-login'
+          "
+        >
+          Login here
+        </a>
+      </p>
+      <p>
+        Don’t have an account?
+        <a
+          [routerLink]="
+            userType === 'passenger' ? '/passenger-signup' : '/driver-signup'
+          "
+          >Sign up here</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

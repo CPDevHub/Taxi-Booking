@@ -11,20 +11,38 @@
   </kendo-appbar-section>
 </kendo-appbar>
 
-<div *ngIf="rideDetails" class="card p-4 shadow rounded">
-  <h3>🚖 Ride Details</h3>
-  <p><strong>Ride ID:</strong> {{ rideDetails.rideId }}</p>
-  <p><strong>Driver Name:</strong> {{ rideDetails.driverName }}</p>
-  <p>
-    <strong>Vehicle:</strong> {{ rideDetails.vehicleModel }} -
-    {{ rideDetails.vehicleNumber }}
-  </p>
+<kendo-card *ngIf="rideDetails" class="ride-details-card">
+  <kendo-card-header>
+    <h3>🚖 Ride Details</h3>
+  </kendo-card-header>
 
-  <h4>Pickup Location:</h4>
-  <p>InTimeTec</p>
+  <kendo-card-body>
+    <p><strong>Ride ID:</strong> {{ rideDetails.rideId }}</p>
+    <p><strong>Driver Name:</strong> {{ rideDetails.driverName }}</p>
+    <p>
+      <strong>Vehicle:</strong> {{ rideDetails.vehicleModel }} -
+      {{ rideDetails.vehicleNumber }}
+    </p>
 
-  <h4>Drop-Off Location:</h4>
-  <p>InTimeTec</p>
-</div>
+    <h4>Pickup Location:</h4>
+    <p>InTimeTec</p>
+
+    <h4>Drop-Off Location:</h4>
+    <p>InTimeTec</p>
+  </kendo-card-body>
+
+  <kendo-card-actions>
+    <kendo-button themeColor="error" (click)="onCancelRide()"
+      >Cancel Ride</kendo-button
+    >
+  </kendo-card-actions>
+</kendo-card>
+
+<app-modal
+  *ngIf="cancelRideModal && rideDetails"
+  [rideId]="rideDetails.rideId"
+  (close)="closeModal()"
+  (submit)="rideCancelConfirm($event)"
+></app-modal>
 
 <router-outlet></router-outlet>

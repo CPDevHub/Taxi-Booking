@@ -1,10 +1,9 @@
 export type Driver = {
   id?: number;
   name: string;
-  TotalRides?: number;
-  Rating?: number;
+  totalRides?: number;
+  rating?: number;
   avatarUrl: string;
   contactNumber: string;
   email: string;
-  password: string;
 };

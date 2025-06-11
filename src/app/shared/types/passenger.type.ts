@@ -1,8 +1,7 @@
-export type Passenger = {
+export type PassengerType = {
   id?: number;
   name: string;
   avatarUrl?: string;
   contactNumber: string;
   email: string;
-  password: string;
 };

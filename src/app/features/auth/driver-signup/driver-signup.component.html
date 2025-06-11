@@ -1,39 +1,58 @@
-<kendo-stacklayout
-  orientation="vertical"
-  style="width: 300px; margin: auto; padding: 2rem; gap: 1rem"
->
-  <form [formGroup]="reactiveForm" (ngSubmit)="onDriverSignup()">
-    <kendo-floatinglabel text="Name">
-      <input kendoTextBox formControlName="name" />
-    </kendo-floatinglabel>
+<div class="signup-container">
+  <div class="signup-card">
+    <h2 class="signup-title">Driver Sign Up</h2>
 
-    <kendo-floatinglabel text="Email">
-      <input kendoTextBox formControlName="email" />
-    </kendo-floatinglabel>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onDriverSignup()">
+      <kendo-stacklayout orientation="vertical" class="signup-form">
+        <kendo-floatinglabel text="Name">
+          <input kendoTextBox formControlName="name" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Password">
-      <input kendoTextBox type="password" formControlName="password" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Email">
+          <input kendoTextBox formControlName="email" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Avatar">
-      <input kendoTextBox formControlName="avatarUrl" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Password">
+          <input kendoTextBox type="password" formControlName="password" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Contact Number">
-      <input kendoTextBox formControlName="contactNumber" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Avatar">
+          <input kendoTextBox formControlName="avatarUrl" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Vehicle Number">
-      <input kendoTextBox formControlName="vehicleNumber" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Contact Number">
+          <input kendoTextBox formControlName="contactNumber" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Vehicle Model">
-      <input kendoTextBox formControlName="vehicleModel" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Vehicle Number">
+          <input kendoTextBox formControlName="vehicleNumber" />
+        </kendo-floatinglabel>
 
-    <kendo-dropdownlist [data]="carTypes" formControlName="vehicleType">
-    </kendo-dropdownlist>
+        <kendo-floatinglabel text="Vehicle Model">
+          <input kendoTextBox formControlName="vehicleModel" />
+        </kendo-floatinglabel>
 
-    <button kendoButton themeColor="primary" type="submit">signup</button>
-  </form>
-</kendo-stacklayout>
+        <kendo-dropdownlist
+          [data]="carTypes"
+          defaultItem="Hatchback"
+          formControlName="vehicleType"
+        ></kendo-dropdownlist>
+
+        <button kendoButton themeColor="primary" type="submit" class="signup-button">
+          Sign Up
+        </button>
+      </kendo-stacklayout>
+    </form>
+
+    <div class="signup-links">
+      <p>
+        Are you a passenger?
+        <a [routerLink]="'/passenger-login'">Log in here</a>
+      </p>
+      <p>
+        Already a driver?
+        <a [routerLink]="'/driver-login'">Log in here</a>
+      </p>
+    </div>
+  </div>
+</div>

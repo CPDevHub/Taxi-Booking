@@ -28,6 +28,7 @@ import { IconsModule } from '@progress/kendo-angular-icons';
 import { AppBarModule } from '@progress/kendo-angular-navigation';
 import { ToastrModule } from 'ngx-toastr';
 import { DialogModule } from '@progress/kendo-angular-dialog';
+import { ModalComponent } from './core/components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     DriverSettingsComponent,
     PassengerSettingsComponent,
     HistoryComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

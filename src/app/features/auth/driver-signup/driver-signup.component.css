@@ -1,0 +1,56 @@
+/* Reset some defaults */
+
+/* Flex center with full screen height */
+.signup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Card with max-width and responsive design */
+.signup-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Typography and spacing */
+.signup-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.signup-form {
+  gap: 1rem;
+}
+
+.signup-button {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.signup-links {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 14px;
+  color: #444;
+}
+
+.signup-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+.signup-links a:hover {
+  text-decoration: underline;
+}

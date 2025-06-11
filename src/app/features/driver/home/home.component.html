@@ -23,4 +23,42 @@
   </kendo-dialog-actions>
 </kendo-dialog>
 
+<kendo-card class="ride-card" *ngIf="rideDetails">
+  <kendo-card-header>
+    <h2 class="k-card-title">Ride In Progress</h2>
+    <h4 class="k-card-subtitle">Passenger Details</h4>
+  </kendo-card-header>
+
+  <kendo-card-body class="ride-body">
+    <div class="ride-detail">
+      <strong>Passenger:</strong> {{ rideDetails.passengerName }}
+    </div>
+    <div class="ride-detail">
+      <strong>Contact:</strong> {{ rideDetails.contactNumber }}
+    </div>
+    <div class="ride-detail">
+      <strong>Pickup:</strong> {{ rideDetails.pickupLocation.address }}
+    </div>
+    <div class="ride-detail">
+      <strong>Drop-off:</strong> {{ rideDetails.dropOffLocation.address }}
+    </div>
+    <!-- <div class="ride-detail">
+      <strong>Fare:</strong> ₹{{ rideDetails.fare }}
+    </div> -->
+    <kendo-card-actions>
+      <!-- <button kendoButton themeColor="primary" (click)="completeRide()">
+      Complete Ride
+    </button> -->
+      <button
+        kendoButton
+        themeColor="error"
+        look="outline"
+        (click)="cancelRide()"
+      >
+        Cancel Ride
+      </button>
+    </kendo-card-actions>
+  </kendo-card-body>
+</kendo-card>
+
 <router-outlet></router-outlet>

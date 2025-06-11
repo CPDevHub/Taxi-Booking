@@ -1,28 +1,49 @@
-<kendo-stacklayout
-  orientation="vertical"
-  style="width: 300px; margin: auto; padding: 2rem; gap: 1rem"
->
-  <form [formGroup]="reactiveForm" (ngSubmit)="onPassengerSignup()">
-    <kendo-floatinglabel text="Name">
-      <input kendoTextBox formControlName="name" />
-    </kendo-floatinglabel>
+<div class="signup-container">
+  <div class="signup-card">
+    <h2 class="signup-title">Passenger Signup</h2>
 
-    <kendo-floatinglabel text="Email">
-      <input kendoTextBox formControlName="email" />
-    </kendo-floatinglabel>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onPassengerSignup()">
+      <kendo-stacklayout orientation="vertical" class="signup-form">
+        <kendo-floatinglabel text="Name">
+          <input kendoTextBox formControlName="name" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Password">
-      <input kendoTextBox type="password" formControlName="password" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Email">
+          <input kendoTextBox formControlName="email" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Avatar">
-      <input kendoTextBox formControlName="avatarUrl" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Password">
+          <input kendoTextBox type="password" formControlName="password" />
+        </kendo-floatinglabel>
 
-    <kendo-floatinglabel text="Contact Number">
-      <input kendoTextBox formControlName="contactNumber" />
-    </kendo-floatinglabel>
+        <kendo-floatinglabel text="Avatar">
+          <input kendoTextBox formControlName="avatarUrl" />
+        </kendo-floatinglabel>
 
-    <button kendoButton themeColor="primary" type="submit">signup</button>
-  </form>
-</kendo-stacklayout>
+        <kendo-floatinglabel text="Contact Number">
+          <input kendoTextBox formControlName="contactNumber" />
+        </kendo-floatinglabel>
+
+        <button
+          kendoButton
+          themeColor="primary"
+          type="submit"
+          class="signup-button"
+        >
+          Signup
+        </button>
+      </kendo-stacklayout>
+    </form>
+
+    <div class="signup-links">
+      <p>
+        Already have an account?
+        <a [routerLink]="'/passenger-login'">Login here</a>
+      </p>
+      <p>
+        Are you a driver?
+        <a [routerLink]="'/driver-signup'">Sign up here</a>
+      </p>
+    </div>
+  </div>
+</div>
