@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Taxi_Booking.Context;
 
@@ -11,9 +12,11 @@ using Taxi_Booking.Context;
 namespace Taxi_Booking.Migrations
 {
     [DbContext(typeof(TaxiBookingContext))]
-    partial class TaxiBookingContextModelSnapshot : ModelSnapshot
+    [Migration("20250611043741_cancellation-reason-added")]
+    partial class cancellationreasonadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

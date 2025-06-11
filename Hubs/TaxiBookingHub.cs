@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Identity.Client;
+using System.Collections.Concurrent;
 using System.Diagnostics.Metrics;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Claims;
@@ -8,7 +9,9 @@ using Taxi_Booking.Helpers;
 using Taxi_Booking.Models.Entities;
 using Taxi_Booking.Models.Enums;
 using Taxi_Booking.Services.Drivers;
+using Taxi_Booking.Services.Passengers;
 using Taxi_Booking.Services.Rides;
+using Taxi_Booking.Services.SignarRServices;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Taxi_Booking.Hubs
@@ -16,16 +19,22 @@ namespace Taxi_Booking.Hubs
     public class TaxiBookingHub:Hub
     {
         private readonly IDriverService _driverService;
+        private readonly IPassengerService _passengerService;
         private readonly IRideService _rideService;
+        private readonly ISignalRService _signalrService;
         private readonly ILogger<TaxiBookingHub> _logger;
         public static Dictionary<string, (int DriverId, DriverLocation Location)> _availableConnections = new();
-        public static Dictionary<int, List<(int DriverId, DriverLocation Location)>> _userRideAvailableDrivers = new();
-
-        public TaxiBookingHub(IDriverService driverService, ILogger<TaxiBookingHub> logger,IRideService rideService)
+        public static Dictionary<int, List<int>> _userRideAvailableDrivers = new();
+        public static Dictionary<int, string> PassengerConnections = new();
+        public static Dictionary<int, string> DriverConnections = new();
+        public static Dictionary<int, List<int> > _rideCancelledDrivers = new();
+        public TaxiBookingHub(IDriverService driverService, ILogger<TaxiBookingHub> logger,IRideService rideService, IPassengerService passengerService, ISignalRService signalrService)
         {
+            _passengerService = passengerService;
             _driverService = driverService;
             _logger = logger;
             _rideService = rideService;
+            _signalrService = signalrService;
         }
         //invoked when cleint connected to hub 
         //SignalR groups are connection-based, not user-based
@@ -35,10 +44,21 @@ namespace Taxi_Booking.Hubs
         //Hub instances are transient, created per connection.
         //Also, Hub instances cannot be injected into other services because their lifetime is tied to the SignalR pipeline and client calls.
         [Authorize]
-        public override Task OnConnectedAsync()
+        public override async Task OnConnectedAsync()
         {
             _logger.LogInformation("Client connected");
-            return base.OnConnectedAsync();
+
+            var role = Context.User.FindFirst(ClaimTypes.Role)?.Value;
+            var userId =Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            _logger.LogInformation("Connected client: Id = {Id}, Role = {Role}", userId, role);
+
+
+            if (role == "Driver" && int.TryParse(userId, out var driverId))
+                await LoginDriver(driverId);
+            else if (role == "Passenger" && int.TryParse(userId, out var passengerId))
+                await LoginPassenger(passengerId);
+
+            await base.OnConnectedAsync();
         }
 
 
@@ -48,6 +68,7 @@ namespace Taxi_Booking.Hubs
             if (driver != null && driver.Status == DriverStatus.Available)
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, "AvailableDrivers");
+                DriverConnections[driverId] = Context.ConnectionId;
                 _logger.LogInformation("Driver {DriverId} added to group 'AvailableDrivers'", driverId);
 
                 await Clients.Client(Context.ConnectionId).SendAsync("SendLocation");
@@ -60,6 +81,7 @@ namespace Taxi_Booking.Hubs
         public async Task LoginPassenger(int passengerId)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{passengerId}");
+            PassengerConnections[passengerId] = Context.ConnectionId;
             _logger.LogInformation("Passenger {UserId} added to group User_{UserId}", passengerId, passengerId);
         }
 
@@ -87,7 +109,9 @@ namespace Taxi_Booking.Hubs
             int driverId = Convert.ToInt32(driverIdStr);
             Ride ride = await _rideService.GetRideByID(rideId);
             Driver driver = await _driverService.GetDriverWithVehicleByIdAsync(driverId);
-            if (ride == null || ride.Status != RideStatus.Requested)
+            var passenger = await _passengerService.GetPassengerByIdAsync(ride.PassengerId);
+
+            if (ride == null)
             {
                 _logger.LogWarning("AcceptRide failed: Ride not found or already accepted.");
                 return;
@@ -97,7 +121,7 @@ namespace Taxi_Booking.Hubs
             await _rideService.UpdateRide(ride);
 
             _logger.LogInformation("Driver {DriverId} accepted ride {RideId}", driverId, rideId);
-            await Clients.Group($"User_{ride.PassengerId}").SendAsync("RideAccepted", new{
+            await Clients.Group($"User_{ride.PassengerId}").SendAsync("RideAcceptedUserNotify", new{
                 RideId = ride.Id,
                 DriverId = ride.DriverId,
                 DriverName = ride.RideDriver?.Name,
@@ -108,7 +132,7 @@ namespace Taxi_Booking.Hubs
 
             if (_userRideAvailableDrivers.TryGetValue(rideId, out var otherDrivers))
             {
-                foreach (var (otherDriverId, _) in otherDrivers)
+                foreach (var otherDriverId in otherDrivers)
                 {
                     if (otherDriverId == driverId) continue; 
 
@@ -124,9 +148,94 @@ namespace Taxi_Booking.Hubs
                     }
                 }
 
-                // Optionally clear it after notifying
+                var driverConnectionId = TaxiBookingHub._availableConnections
+                        .FirstOrDefault(x => x.Value.DriverId == driverId).Key;
+                await Clients.Client(driverConnectionId).SendAsync("RideAcceptedDriverNotify", new {
+                    RideId = ride.Id,
+                    PickupLocation = new
+                    {
+                        ride.PickupLocation?.Latitude,
+                        ride.PickupLocation?.Longitude,
+                        ride.PickupLocation?.Address
+                    },
+                    DropOffLocation = new
+                    {
+                        ride.DropOffLocation?.Latitude,
+                        ride.DropOffLocation?.Longitude,
+                        ride.DropOffLocation?.Address
+                    },
+                    PassengerName = passenger.Name,
+                    ContactNumber = passenger.ContactNumber
+                });
+
                 TaxiBookingHub._userRideAvailableDrivers.Remove(rideId);
             }
+
+        }
+
+        public async Task CancelRideByDriver(int rideId)
+        {
+            var driverIdStr = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (driverIdStr == null)
+            {
+                _logger.LogWarning("CancelRide failed: Driver not authenticated.");
+                return;
+            }
+            int driverId = Convert.ToInt32(driverIdStr);
+            Ride ride = await _rideService.GetRideByID(rideId);
+
+            if (!_rideCancelledDrivers.ContainsKey(rideId))
+                _rideCancelledDrivers[rideId] = new List<int>();
+
+            _rideCancelledDrivers[rideId].Add(driverId);
+
+            ride.Status = RideStatus.Cancelled;
+            ride.DriverId = null;
+            await _rideService.UpdateRide(ride);
+
+
+            if (PassengerConnections.TryGetValue(ride.PassengerId, out var userConnectionId))
+            {
+                await Clients.Client(userConnectionId).SendAsync("RideCancelledByDriver", new
+                {
+                    RideId = ride.Id,
+                    Message = "Driver has cancelled your ride. Searching for another driver..."
+                });
+            }
+
+            await _signalrService.NotifyNearByDrivers(ride);
+
+        }
+
+        public async Task CancelRideByPassenger(int rideId,string reason)
+        {
+            var passengerStr = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (passengerStr == null) 
+            {
+                _logger.LogWarning("CancelRide failed: Driver not authenticated.");
+                return;
+            }
+            int passengerId = Convert.ToInt32(passengerStr);
+            _logger.LogWarning("Passenger Authenticated with Id:{id} and doe cancellation Reason:{reason}", passengerId,reason) ;
+
+            Ride ride = await _rideService.GetRideByID(rideId);
+            var passenger = await _passengerService.GetPassengerByIdAsync(ride.PassengerId);
+            ride.Status = RideStatus.Cancelled;
+            ride.CancellationReason = reason;
+            await _rideService.UpdateRide(ride);
+
+
+            passenger.CancellationCharges = 0.05 * ride.TotalFare;
+            await _passengerService.UpdatePassenger(passenger);
+
+            
+            int driverId = ride.DriverId.Value;
+            string driverConnectionId = DriverConnections[driverId];
+            await Clients.Client(driverConnectionId).SendAsync("RideCancelledByPassenger", new
+            {
+                RideId = ride.Id,
+                Message = "Passenger has cancelled your ride"
+            });
 
         }
 

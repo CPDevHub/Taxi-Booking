@@ -10,7 +10,9 @@ namespace Taxi_Booking.DTO.Responses
         public string ContactNumber { get; set; }
         public int TotalRides { get; set; }
         public double Rating { get; set; }
+        public string AvatarUrl { get; set; }
         public ICollection<Ride> DriverRides { get; set; }
+         
 
     }
 }

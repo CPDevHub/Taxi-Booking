@@ -31,5 +31,17 @@ namespace Taxi_Booking.Repositories.Passengers
             _logger.LogInformation("Passenger created with ID: {PassengerId}, Email: {Email}", newPassenger.Id, newPassenger.Email);
             return true;
         }
+
+        public async Task<Passenger> GetPassengerByIdAsync(int id)
+        {
+            return await _taxiContext.Passenger.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public async Task<Boolean> UpdatePassenger(Passenger passenger)
+        {
+            _taxiContext.Update(passenger);
+            await _taxiContext.SaveChangesAsync();
+            return true;
+        }
     }
 }

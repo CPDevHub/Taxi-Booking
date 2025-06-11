@@ -13,6 +13,7 @@ namespace Taxi_Booking.Models.Entities
         public DateTime RideEndAt { get; set; }
         public Location PickupLocation { get; set; }
         public Location DropOffLocation { get; set; }
+        public string? CancellationReason { get; set; }
         public int PassengerId { get; set; }
         public Passenger RidePassenger { get; set; }
         public int ?DriverId { get; set; }

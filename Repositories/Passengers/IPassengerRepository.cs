@@ -8,5 +8,7 @@ namespace Taxi_Booking.Repositories.Passengers
     {
         public Task<Passenger> GetPassengerByEmailAsync(string email);
         public Task<Boolean> CreatePassengerAsync(PassengerRegisterDto passenger);
+        public Task<Passenger> GetPassengerByIdAsync(int passengerId);
+        public Task<Boolean> UpdatePassenger(Passenger passenger);
     }
 }

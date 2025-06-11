@@ -37,5 +37,15 @@ namespace Taxi_Booking.Services.Passengers
             _logger.LogInformation("Service: Passenger successfully registered with email: {Email}", passenger.Email);
             return result;
         }
+
+        public async Task<Passenger> GetPassengerByIdAsync(int passengerId)
+        {
+            return await _passengerRepository.GetPassengerByIdAsync(passengerId);
+        }
+
+        public async Task<Boolean> UpdatePassenger(Passenger passenger)
+        {
+            return await _passengerRepository.UpdatePassenger(passenger);
+        }
     }
 }

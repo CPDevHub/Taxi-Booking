@@ -16,11 +16,16 @@ namespace Taxi_Booking.Services.SignarRServices
 
         public async Task NotifyNearByDrivers(Ride ride)
         {
+
+            var cancelledDrivers = TaxiBookingHub._rideCancelledDrivers.ContainsKey(ride.Id)
+        ? TaxiBookingHub._rideCancelledDrivers[ride.Id]
+        : new List<int>();
+
             var nearbyDrivers = TaxiBookingHub._availableConnections.Where(driver =>
             GeoUtils.GetDistanceInKm(
-                driver.Value.Location,ride.PickupLocation
-            ) <= 5 
-        ).ToList();
+                driver.Value.Location, ride.PickupLocation
+            ) <= 5 &&
+            !cancelledDrivers.Contains(driver.Value.DriverId)).ToList();
 
             foreach (var driver in nearbyDrivers)
             {
@@ -45,9 +50,10 @@ namespace Taxi_Booking.Services.SignarRServices
                 if (!TaxiBookingHub._userRideAvailableDrivers.ContainsKey(ride.Id))
                     TaxiBookingHub._userRideAvailableDrivers[ride.Id] = new();
 
-                TaxiBookingHub._userRideAvailableDrivers[ride.Id].Add((driver.Value.DriverId, driver.Value.Location));
+                TaxiBookingHub._userRideAvailableDrivers[ride.Id].Add(driver.Value.DriverId);
 
-            }
+                }
+            
         }
     }
 }
