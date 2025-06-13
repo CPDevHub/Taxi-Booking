@@ -1,42 +1,19 @@
-<kendo-appbar position="top">
-  <kendo-appbar-section>
-    <span class="k-appbar-title">Passenger Panel</span>
-  </kendo-appbar-section>
+<div class="home-container">
+  <!-- Left Sidebar Component -->
+  <app-sidebar
+    (pickupSelected)="handlePickupSelected($event)"
+    (dropoffSelected)="handleDropoffSelected($event)"
+    (cancelRideModal)="onCancelRide()"
+    [rideDetails]="rideDetails"
+  >
+  </app-sidebar>
 
-  <kendo-appbar-spacer></kendo-appbar-spacer>
-
-  <kendo-appbar-section>
-    <button kendoButton routerLink="history" look="flat">History</button>
-    <button kendoButton routerLink="settings" look="flat">Settings</button>
-  </kendo-appbar-section>
-</kendo-appbar>
-
-<kendo-card *ngIf="rideDetails" class="ride-details-card">
-  <kendo-card-header>
-    <h3>🚖 Ride Details</h3>
-  </kendo-card-header>
-
-  <kendo-card-body>
-    <p><strong>Ride ID:</strong> {{ rideDetails.rideId }}</p>
-    <p><strong>Driver Name:</strong> {{ rideDetails.driverName }}</p>
-    <p>
-      <strong>Vehicle:</strong> {{ rideDetails.vehicleModel }} -
-      {{ rideDetails.vehicleNumber }}
-    </p>
-
-    <h4>Pickup Location:</h4>
-    <p>InTimeTec</p>
-
-    <h4>Drop-Off Location:</h4>
-    <p>InTimeTec</p>
-  </kendo-card-body>
-
-  <kendo-card-actions>
-    <kendo-button themeColor="error" (click)="onCancelRide()"
-      >Cancel Ride</kendo-button
-    >
-  </kendo-card-actions>
-</kendo-card>
+  <!-- Right Map Section -->
+  <div class="map-section">
+    <app-map [pickupCoords]="pickupCoords" [dropoffCoords]="dropoffCoords">
+    </app-map>
+  </div>
+</div>
 
 <app-modal
   *ngIf="cancelRideModal && rideDetails"

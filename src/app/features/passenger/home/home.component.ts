@@ -11,8 +11,20 @@ import { RideCancelType } from 'src/app/shared/types/rideCancel.type';
 })
 export class PassengerHomeComponent implements OnInit {
   rideDetails: rideAcceptType | null = null;
-
   cancelRideModal: boolean = false;
+
+  pickupCoords: any;
+  dropoffCoords: any;
+
+  handlePickupSelected(location: any) {
+    this.pickupCoords = location;
+    console.log(location);
+  }
+
+  handleDropoffSelected(location: any) {
+    this.dropoffCoords = location;
+    console.log(location);
+  }
 
   constructor(
     private signalr: SignalrService,
@@ -26,12 +38,20 @@ export class PassengerHomeComponent implements OnInit {
       }
     );
 
-    this.signalr.rideCancelledByDriver$.subscribe(
-      (data: RideCancelType) => {
-        this.toaster.info(data.message);
-        this.rideDetails = null;
-      }
-    );
+    this.signalr.rideCancelledByDriver$.subscribe((data: RideCancelType) => {
+      this.toaster.info(data.message);
+      this.rideDetails = null;
+    });
+
+    this.signalr.rideCompleted$.subscribe(() => {
+      console.log('Ride completed');
+      this.rideDetails=null;
+    });
+
+    this.signalr.rideStart$.subscribe(() => {
+      console.log('ride started');
+      this.rideDetails=null;
+    });
   }
 
   rideCancelConfirm(data: { rideId: number; reason: string }) {

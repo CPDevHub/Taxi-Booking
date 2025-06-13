@@ -15,7 +15,7 @@ export class SignalrService {
   private locationRequestedSubject = new Subject<void>();
   locationRequested$ = this.locationRequestedSubject.asObservable();
 
-  private rideRequestSubject = new Subject<RideRequestType | null>();
+  private rideRequestSubject = new Subject<RideRequestType>();
   rideRequest$ = this.rideRequestSubject.asObservable();
 
   private rideAcceptPassengerNotifySubject =
@@ -36,6 +36,12 @@ export class SignalrService {
   rideCancelledByPassenger$ =
     this.rideCancelledByPassengerSubject.asObservable();
 
+  private rideCompletedSubject = new Subject<void>();
+  rideCompleted$ = this.rideCompletedSubject.asObservable();
+
+  private rideStartSubject = new Subject<void>();
+  rideStart$ = this.rideStartSubject.asObservable();
+
   connect(): Promise<void> {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl('https://localhost:7134/taxiBookingHub', {
@@ -49,6 +55,17 @@ export class SignalrService {
     this.registerListeners();
 
     return this.hubConnection.start();
+  }
+
+  stopConnection(): void {
+    if (this.hubConnection) {
+      this.hubConnection
+        .stop()
+        .then(() => {
+          console.log('SignalR connection stopped');
+        })
+        .catch((err) => console.error('Error stopping connection:', err));
+    }
   }
 
   private registerListeners() {
@@ -66,6 +83,16 @@ export class SignalrService {
       this.rideAcceptPassengerNotifySubject.next(data);
     });
 
+    this.hubConnection.on('RideStart', () => {
+      console.log('Ride started');
+      this.rideStartSubject.next();
+    });
+
+    this.hubConnection.on('RideCompleted', () => {
+      console.log('ride completed');
+      this.rideCompletedSubject.next();
+    });
+
     this.hubConnection.on(
       'RideAcceptedDriverNotify',
       (data: rideDetailsType) => {
@@ -74,9 +101,9 @@ export class SignalrService {
       }
     );
 
-    this.hubConnection.on('RideAlreadyAccepted', (data: number) => {
+    this.hubConnection.on('RideAlreadyAccepted', (data: { rideId: number }) => {
       console.log('Ride already accepted:', data);
-      this.rideAlreadyAcceptedSubject.next(data);
+      this.rideAlreadyAcceptedSubject.next(data.rideId);
     });
 
     this.hubConnection.on('RideCancelledByDriver', (data: RideCancelType) => {
@@ -104,7 +131,15 @@ export class SignalrService {
     await this.hubConnection.invoke('CancelRideByDriver', rideId);
   }
 
+  async completeRide(rideId: number) {
+    await this.hubConnection.invoke('CompleteRide', rideId);
+  }
+  async startRide(rideId: number) {
+    await this.hubConnection.invoke('RideStart', rideId);
+  }
+
   async cancelRideByPassenger(data: { rideId: number; reason: string }) {
+    console.log(data.rideId, data.reason);
     await this.hubConnection.invoke(
       'CancelRideByPassenger',
       data.rideId,
@@ -122,11 +157,9 @@ export class SignalrService {
 
   async acceptRide(rideId: number) {
     await this.hubConnection.invoke('AcceptRide', rideId);
-    this.rideRequestSubject.next(null);
   }
 
   async rejectRide(rideId: number) {
     await this.hubConnection.invoke('RejectRide', rideId);
-    this.rideRequestSubject.next(null);
   }
 }

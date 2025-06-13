@@ -12,9 +12,8 @@ import { RideRequestType } from 'src/app/shared/types/rideRequrest.type';
   styleUrls: ['./home.component.css'],
 })
 export class DriverHomeComponent implements OnInit {
-  rideRequest: RideRequestType | null = null;
+  rideRequests: RideRequestType[] = [];
   rideDetails: rideDetailsType | null = null;
-  showRideRequest = false;
 
   constructor(
     private signalRService: SignalrService,
@@ -30,26 +29,17 @@ export class DriverHomeComponent implements OnInit {
         );
       });
     });
+
     this.signalRService.rideAlreadyAccepted$.subscribe((data: number) => {
-      this.showRideRequest = false;
-      this.rideRequest = null;
+      this.rideRequests = this.rideRequests.filter((ride) => ride.id !== data);
     });
 
-    this.signalRService.rideRequest$.subscribe(
-      (ride: RideRequestType | null) => {
-        if (ride) {
-          this.showRideRequest = true;
-          this.rideRequest = ride;
-        } else {
-          this.showRideRequest = false;
-          this.rideRequest = null;
-        }
-      }
-    );
+    this.signalRService.rideRequest$.subscribe((ride: RideRequestType) => {
+      this.rideRequests.push(ride);
+    });
 
     this.signalRService.rideCancelledByPassenger$.subscribe(
       (data: RideCancelType) => {
-        this.showRideRequest = false;
         this.rideDetails = null;
         this.toaster.info(data.message);
       }
@@ -58,22 +48,42 @@ export class DriverHomeComponent implements OnInit {
     this.signalRService.rideAcceptDriverNotify$.subscribe(
       (data: rideDetailsType | null) => {
         this.rideDetails = data;
+        this.rideRequests = [];
       }
     );
   }
 
-  acceptRide() {
-    if (this.rideRequest) this.signalRService.acceptRide(this.rideRequest.id);
+  acceptRide(id: number) {
+    this.signalRService.acceptRide(id);
   }
-  rejectRide() {
-    if (this.rideRequest) this.signalRService.rejectRide(this.rideRequest.id);
+
+  rejectRide(id: number) {
+    this.signalRService.rejectRide(id);
+    this.rideRequests = this.rideRequests.filter((ride) => ride.id !== id);
   }
 
   cancelRide() {
     if (this.rideDetails?.rideId) {
       const rideId = this.rideDetails.rideId;
       this.rideDetails = null;
+      this.rideRequests = [];
       this.signalRService.cancelRideByDriver(rideId);
+    }
+  }
+
+  completeRide() {
+    if (this.rideDetails?.rideId) {
+      const rideId = this.rideDetails.rideId;
+      this.rideDetails = null;
+      this.rideRequests = [];
+      this.signalRService.completeRide(rideId);
+    }
+  }
+
+  startRide(){
+    if (this.rideDetails?.rideId) {
+      const rideId = this.rideDetails.rideId;
+      this.signalRService.startRide(rideId);
     }
   }
 }

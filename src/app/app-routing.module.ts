@@ -9,9 +9,12 @@ import { DriverHomeComponent } from './features/driver/home/home.component';
 import { DashboardComponent } from './features/driver/dashboard/dashboard.component';
 import { DriverSettingsComponent } from './features/driver/settings/settings.component';
 import { PassengerHomeComponent } from './features/passenger/home/home.component';
-import { HistoryComponent } from './features/passenger/history/history.component';
+
 import { PassengerSettingsComponent } from './features/passenger/settings/settings.component';
 import { AuthGuardService } from './features/auth/auth-guard.service';
+import { RideHistoryComponent } from './core/pages/history/history.component';
+import { PassengerLayoutComponent } from './features/passenger/passenger-layout/passenger-layout.component';
+import { DriverLayoutComponent } from './features/driver/driver-layout/driver-layout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'passenger-login', pathMatch: 'full' },
@@ -22,13 +25,21 @@ const routes: Routes = [
   { path: 'unauthorized', component: UnauthorizedComponent },
   {
     path: 'driver',
-    component: DriverHomeComponent,
+    component: DriverLayoutComponent,
     canActivate: [AuthGuardService],
     data: { expectedRole: 'Driver' },
     children: [
       {
+        path: '',
+        component: DriverHomeComponent,
+      },
+      {
         path: 'dashboard',
         component: DashboardComponent,
+      },
+      {
+        path: 'history',
+        component: RideHistoryComponent,
       },
       {
         path: 'settings',
@@ -38,13 +49,17 @@ const routes: Routes = [
   },
   {
     path: 'passenger',
-    component: PassengerHomeComponent,
+    component: PassengerLayoutComponent,
     canActivate: [AuthGuardService],
     data: { expectedRole: 'Passenger' },
     children: [
       {
+        path: '',
+        component: PassengerHomeComponent,
+      },
+      {
         path: 'history',
-        component: HistoryComponent,
+        component: RideHistoryComponent,
       },
       {
         path: 'settings',

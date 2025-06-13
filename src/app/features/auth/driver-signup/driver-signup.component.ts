@@ -29,7 +29,7 @@ export class DriverSignupComponent implements OnInit {
       avatarUrl: new FormControl(null, [Validators.required]),
       contactNumber: new FormControl(null, [Validators.required]),
       vehicleNumber: new FormControl(null, [Validators.required]),
-      vehicleType: new FormControl(VehicleType.Hatchback),
+      driverVehicleType: new FormControl(VehicleType.Hatchback),
       vehicleModel: new FormControl(null, [Validators.required]),
     });
   }

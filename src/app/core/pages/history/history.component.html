@@ -1,0 +1,47 @@
+<button kendoButton look="default" class="k-button-solid-primary" routerLink="../">Back</button>
+
+<kendo-grid
+  [data]="rideHistory"
+  [pageable]="false"
+  [sortable]="true"
+  [height]="800"
+  class="kendo-table"
+>
+  <kendo-grid-column
+    field="id"
+    title="Ride ID"
+    [width]="80"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="pickupLocation"
+    title="Pickup"
+    [width]="180"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="dropoffLocation"
+    title="Dropoff"
+    [width]="180"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="totalFare"
+    title="Fare (₹)"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column field="rideDateTime" title="Date & Time" [width]="180">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{ dataItem.rideStartAt | date : "short" }}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="status" title="Status" [width]="100">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span
+        [ngClass]="{
+          'status-completed': dataItem.status === 'Completed',
+          'status-cancelled': dataItem.status === 'Cancelled'
+        }"
+      >
+        {{ dataItem.status }}
+      </span>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

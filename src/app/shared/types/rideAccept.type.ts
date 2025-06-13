@@ -4,4 +4,6 @@ export type rideAcceptType = {
   driverName: string;
   vehicleNumber: string;
   vehicleModel: string;
+  fare: number;
+  previousCancellationCharges: number;
 };

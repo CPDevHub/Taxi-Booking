@@ -1,0 +1,80 @@
+<div class="sidebar">
+  <!-- Show Book Ride Form -->
+  <ng-container *ngIf="!rideDetails; else rideInfo">
+    <h3 class="k-heading">Book Your Ride</h3>
+
+    <label class="k-label">Pickup Location</label>
+    <kendo-combobox
+      [data]="pickupSuggestions"
+      [textField]="'text'"
+      [valueField]="'text'"
+      (filterChange)="onPickupChange($event)"
+      (valueChange)="onPickupSelect($event)"
+      placeholder="Enter pickup location"
+      [filterable]="true"
+    ></kendo-combobox>
+
+    <label class="k-label mt-4">Drop-off Location</label>
+    <kendo-combobox
+      [data]="dropoffSuggestions"
+      [textField]="'text'"
+      [valueField]="'text'"
+      (filterChange)="onDropoffChange($event)"
+      (valueChange)="onDropoffSelect($event)"
+      placeholder="Enter drop-off location"
+      [filterable]="true"
+    ></kendo-combobox>
+
+    <label for="carType">Select Car Type:</label>
+    <kendo-dropdownlist
+      [data]="carTypes"
+      [(ngModel)]="selectedCarType"
+      [defaultItem]="selectedCarType"
+      [valuePrimitive]="true"
+    ></kendo-dropdownlist>
+
+    <button
+      kendoButton
+      themeColor="primary"
+      (click)="bookRide()"
+      [disabled]="!pickupLocation || !dropOffLocation || !selectedCarType"
+    >
+      Book Ride
+    </button>
+  </ng-container>
+
+  <ng-template #rideInfo>
+    <kendo-card class="ride-details-card">
+      <kendo-card-header>
+        <h3>🚖 Ride Details</h3>
+      </kendo-card-header>
+
+      <kendo-card-body>
+        <p><strong>Ride ID:</strong> {{ rideDetails?.rideId }}</p>
+        <p><strong>Driver Name:</strong> {{ rideDetails?.driverName }}</p>
+        <p>
+          <strong>Vehicle:</strong> {{ rideDetails?.vehicleModel }} -
+          {{ rideDetails?.vehicleNumber }}
+        </p>
+
+        <p><strong>Ride Fare:</strong> {{ rideDetails?.fare }}</p>
+        <div *ngIf="rideDetails?.previousCancellationCharges">
+          <strong>Previous Cancellation Charges:</strong>
+          {{ rideDetails?.previousCancellationCharges }}
+        </div>
+
+        <h4>Pickup Location:</h4>
+        <p>{{ pickupLocation.address }}</p>
+
+        <h4>Drop-Off Location:</h4>
+        <p>{{ dropOffLocation.address }}</p>
+      </kendo-card-body>
+
+      <kendo-card-actions>
+        <kendo-button themeColor="error" (click)="onCancelRide()">
+          Cancel Ride
+        </kendo-button>
+      </kendo-card-actions>
+    </kendo-card>
+  </ng-template>
+</div>

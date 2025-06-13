@@ -1,8 +1,11 @@
-.ride-details-card {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: white;
+
+.home-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+}
+
+.map-section {
+  height: 100%;
+  width: 100%;
 }

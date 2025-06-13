@@ -1,64 +1,120 @@
-<kendo-appbar position="top">
-  <kendo-appbar-section>
-    <span class="k-appbar-title">Driver Panel</span>
-  </kendo-appbar-section>
 
-  <kendo-appbar-spacer></kendo-appbar-spacer>
+<!-- Show incoming ride requests as cards -->
+<div class="home-container">
+  <div class="sidebar">
+    <ng-container
+      *ngIf="rideRequests.length > 0 && !rideDetails; else requestList"
+    >
+      <div class="ride-requests-container">
+        <kendo-card class="ride-card" *ngFor="let request of rideRequests">
+          <kendo-card-header>
+            <h2 class="k-card-title">New Ride Request</h2>
+          </kendo-card-header>
 
-  <kendo-appbar-section>
-    <button kendoButton routerLink="dashboard" look="flat">Dashboard</button>
-    <button kendoButton routerLink="settings" look="flat">Settings</button>
-  </kendo-appbar-section>
-</kendo-appbar>
+          <kendo-card-body class="ride-body">
+            <div class="ride-detail">
+              <strong>Pickup:</strong> {{ request.pickupLocation.address }}
+            </div>
+            <div class="ride-detail">
+              <strong>Drop-off:</strong> {{ request.dropOffLocation.address }}
+            </div>
+            <div class="ride-detail">
+              <strong>Ride Fare:</strong> {{ request.fare }}
+            </div>
 
-<kendo-dialog *ngIf="showRideRequest" title="New Ride Request">
-  <p><strong>Pickup:</strong> {{ rideRequest?.pickupLocation?.address }}</p>
-  <p><strong>Drop-off:</strong> {{ rideRequest?.dropOffLocation?.address }}</p>
+            <kendo-card-actions>
+              <button
+                kendoButton
+                themeColor="primary"
+                (click)="acceptRide(request.id)"
+              >
+                Accept
+              </button>
+              <button
+                kendoButton
+                look="outline"
+                (click)="rejectRide(request.id)"
+              >
+                Reject
+              </button>
+            </kendo-card-actions>
+          </kendo-card-body>
+        </kendo-card>
+      </div>
+    </ng-container>
 
-  <kendo-dialog-actions>
-    <button kendoButton (click)="acceptRide()" themeColor="primary">
-      Accept
-    </button>
-    <button kendoButton (click)="rejectRide()">Reject</button>
-  </kendo-dialog-actions>
-</kendo-dialog>
+    <ng-template #requestList>
+      <kendo-card class="ride-card" *ngIf="rideDetails">
+        <kendo-card-header>
+          <h2 class="k-card-title">Ride In Progress</h2>
+          <h4 class="k-card-subtitle">Passenger Details</h4>
+        </kendo-card-header>
 
-<kendo-card class="ride-card" *ngIf="rideDetails">
-  <kendo-card-header>
-    <h2 class="k-card-title">Ride In Progress</h2>
-    <h4 class="k-card-subtitle">Passenger Details</h4>
-  </kendo-card-header>
+        <kendo-card-body class="ride-body">
+          <div class="ride-detail">
+            <strong>Passenger:</strong> {{ rideDetails.passengerName }}
+          </div>
+          <div class="ride-detail">
+            <strong>Contact:</strong> {{ rideDetails.contactNumber }}
+          </div>
+          <div class="ride-detail">
+            <strong>Pickup:</strong> {{ rideDetails.pickupLocation.address }}
+          </div>
+          <div class="ride-detail">
+            <strong>Drop-off:</strong> {{ rideDetails.dropOffLocation.address }}
+          </div>
+          <div class="ride-detail">
+            <strong>Ride Fare:</strong> {{ rideDetails.fare }}
+          </div>
+          <div
+            class="ride-detail"
+            *ngIf="rideDetails.previousCancellationCharges > 0"
+          >
+            <strong>Previous Cancellation Charges:</strong>
+            {{ rideDetails.previousCancellationCharges }}
+          </div>
 
-  <kendo-card-body class="ride-body">
-    <div class="ride-detail">
-      <strong>Passenger:</strong> {{ rideDetails.passengerName }}
-    </div>
-    <div class="ride-detail">
-      <strong>Contact:</strong> {{ rideDetails.contactNumber }}
-    </div>
-    <div class="ride-detail">
-      <strong>Pickup:</strong> {{ rideDetails.pickupLocation.address }}
-    </div>
-    <div class="ride-detail">
-      <strong>Drop-off:</strong> {{ rideDetails.dropOffLocation.address }}
-    </div>
-    <!-- <div class="ride-detail">
-      <strong>Fare:</strong> ₹{{ rideDetails.fare }}
-    </div> -->
-    <kendo-card-actions>
-      <!-- <button kendoButton themeColor="primary" (click)="completeRide()">
-      Complete Ride
-    </button> -->
-      <button
-        kendoButton
-        themeColor="error"
-        look="outline"
-        (click)="cancelRide()"
-      >
-        Cancel Ride
-      </button>
-    </kendo-card-actions>
-  </kendo-card-body>
-</kendo-card>
-
-<router-outlet></router-outlet>
+          <kendo-card-actions>
+            <button
+              kendoButton
+              themeColor="info"
+              look="outline"
+              (click)="startRide()"
+            >
+              Start Ride
+            </button>
+            <button
+              kendoButton
+              themeColor="error"
+              look="outline"
+              (click)="cancelRide()"
+            >
+              Cancel Ride
+            </button>
+            <button
+              kendoButton
+              themeColor="success"
+              look="outline"
+              (click)="completeRide()"
+            >
+              Complete Ride
+            </button>
+          </kendo-card-actions>
+        </kendo-card-body>
+      </kendo-card>
+    </ng-template>
+  </div>
+  <div class="map-section">
+    <app-map
+      [pickupCoords]="{
+        latitude: rideDetails?.pickupLocation?.latitude,
+        longitude: rideDetails?.pickupLocation?.longitude
+      }"
+      [dropoffCoords]="{
+        latitude: rideDetails?.dropOffLocation?.latitude,
+        longitude: rideDetails?.dropOffLocation?.longitude
+      }"
+    >
+    </app-map>
+  </div>
+</div>

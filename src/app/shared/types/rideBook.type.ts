@@ -1,5 +1,6 @@
-export type rideDetailsType = {
-  rideId: number;
+import { VehicleType } from "../enums/vehicleType.enums";
+
+export type rideBookType = {
   pickupLocation: {
     address: string;
     latitude: number;
@@ -10,8 +11,5 @@ export type rideDetailsType = {
     latitude: number;
     longitude: number;
   };
-  passengerName: string;
-  contactNumber: string;
-  fare: number;
-  previousCancellationCharges: number;
+  rideVehicle:VehicleType
 };

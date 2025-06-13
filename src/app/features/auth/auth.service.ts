@@ -17,9 +17,10 @@ export class AuthService {
   }
 
   driverSignup(driver: Driver) {
+    console.log(driver);
     return this.httpClient.post(`${this.baseUrl}/auth/driver-signup`, driver);
   }
-  
+
   passengerSignup(passenger: PassengerType) {
     return this.httpClient.post(
       `${this.baseUrl}/auth/passenger-signup`,
