@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\drivers\\driverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\drivers\\driverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\dto\\authentication\\driverregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:dto\\authentication\\driverregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\models\\enums\\vehicletypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:models\\enums\\vehicletypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\hubs\\taxibookinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:hubs\\taxibookinghub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,28 +27,140 @@
       "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\signarrservices\\signalrservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\passengers\\passengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\passengers\\passengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\rides\\riderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\rides\\riderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\passengers\\passengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\passengers\\passengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\controllers\\ridecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:controllers\\ridecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\passengers\\ipassengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\passengers\\ipassengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\dto\\createriderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:dto\\createriderequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\passengers\\ipassengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\passengers\\ipassengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\models\\entities\\ride.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:models\\entities\\ride.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Migrations\\20250611043741_cancellation-reason-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250611043741_cancellation-reason-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\profiles\\rideprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:profiles\\rideprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\rides\\rideservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\rides\\rideservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\models\\entities\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:models\\entities\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\drivers\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\drivers\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\dto\\authentication\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:dto\\authentication\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Migrations\\20250613064320_ride-vehicleType-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250613064320_ride-vehicleType-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\models\\entities\\vechile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:models\\entities\\vechile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\context\\taxibookingcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:context\\taxibookingcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\dto\\vehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:dto\\vehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\dto\\ridehistorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:dto\\ridehistorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\controllers\\passengercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:controllers\\passengercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\profiles\\locationprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:profiles\\locationprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\profiles\\responseprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:profiles\\responseprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\profiles\\vehicleprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:profiles\\vehicleprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\profiles\\authenticationprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:profiles\\authenticationprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\rides\\irideservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\rides\\irideservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\rides\\iriderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\rides\\iriderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\helpers\\geoutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:helpers\\geoutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\passengers\\passengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\passengers\\passengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\passengers\\passengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\passengers\\passengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\models\\entities\\latlng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:models\\entities\\latlng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\models\\entities\\passenger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:models\\entities\\passenger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\models\\entities\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:models\\entities\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\drivers\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\drivers\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\drivers\\idriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\drivers\\idriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\passengers\\ipassengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\passengers\\ipassengerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\services\\driverlocationbroadcastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:services\\driverlocationbroadcastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|c:\\users\\aayush.garg\\source\\repos\\taxi booking\\repositories\\passengers\\ipassengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A22027F5-DC91-4128-8FE2-64A157B731E7}|Taxi Booking.csproj|solutionrelative:repositories\\passengers\\ipassengerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,18 +169,18 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 223,
-          "SelectedChildIndex": 1,
+          "DockedHeight": 154,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "SignalRService.cs",
               "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\SignarRServices\\SignalRService.cs",
               "RelativeDocumentMoniker": "Services\\SignarRServices\\SignalRService.cs",
               "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\SignarRServices\\SignalRService.cs",
               "RelativeToolTip": "Services\\SignarRServices\\SignalRService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAewBUAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAcwC4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T18:29:41.528Z",
               "IsPinned": true,
@@ -60,13 +188,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "TaxiBookingHub.cs",
               "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Hubs\\TaxiBookingHub.cs",
               "RelativeDocumentMoniker": "Hubs\\TaxiBookingHub.cs",
-              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Hubs\\TaxiBookingHub.cs*",
-              "RelativeToolTip": "Hubs\\TaxiBookingHub.cs*",
-              "ViewState": "AgIAAMcAAAAAaGZmZmYFwOIAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Hubs\\TaxiBookingHub.cs",
+              "RelativeToolTip": "Hubs\\TaxiBookingHub.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAEoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T18:29:47.02Z",
               "IsPinned": true,
@@ -74,20 +202,466 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\AuthenticationController.cs*",
+              "RelativeToolTip": "Controllers\\AuthenticationController.cs*",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAIwIgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T04:43:30.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "DriverRegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\Authentication\\DriverRegisterDto.cs",
+              "RelativeDocumentMoniker": "DTO\\Authentication\\DriverRegisterDto.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\Authentication\\DriverRegisterDto.cs",
+              "RelativeToolTip": "DTO\\Authentication\\DriverRegisterDto.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBYAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T06:48:40.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VehicleTypes.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Enums\\VehicleTypes.cs",
+              "RelativeDocumentMoniker": "Models\\Enums\\VehicleTypes.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Enums\\VehicleTypes.cs",
+              "RelativeToolTip": "Models\\Enums\\VehicleTypes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T18:10:48.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DriverService.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Drivers\\DriverService.cs",
+              "RelativeDocumentMoniker": "Services\\Drivers\\DriverService.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Drivers\\DriverService.cs",
+              "RelativeToolTip": "Services\\Drivers\\DriverService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAA3wC0AAACZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:45:41.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RideRepository.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Rides\\RideRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Rides\\RideRepository.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Rides\\RideRepository.cs",
+              "RelativeToolTip": "Repositories\\Rides\\RideRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAowCQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T04:50:24.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RideController.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\RideController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RideController.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\RideController.cs",
+              "RelativeToolTip": "Controllers\\RideController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAACYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:09:32.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:23:42.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RideService.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Rides\\RideService.cs",
+              "RelativeDocumentMoniker": "Services\\Rides\\RideService.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Rides\\RideService.cs",
+              "RelativeToolTip": "Services\\Rides\\RideService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwCAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T04:50:19.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RideProfile.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\RideProfile.cs",
+              "RelativeDocumentMoniker": "Profiles\\RideProfile.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\RideProfile.cs",
+              "RelativeToolTip": "Profiles\\RideProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:32:56.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateRideRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\CreateRideRequestDto.cs",
+              "RelativeDocumentMoniker": "DTO\\CreateRideRequestDto.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\CreateRideRequestDto.cs",
+              "RelativeToolTip": "DTO\\CreateRideRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T04:42:15.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Ride.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Ride.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Ride.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Ride.cs",
+              "RelativeToolTip": "Models\\Entities\\Ride.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAUwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T04:36:45.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DriverController.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\DriverController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DriverController.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\DriverController.cs",
+              "RelativeToolTip": "Controllers\\DriverController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:15:15.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\Authentication\\LoginDto.cs",
+              "RelativeDocumentMoniker": "DTO\\Authentication\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\Authentication\\LoginDto.cs",
+              "RelativeToolTip": "DTO\\Authentication\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T06:47:37.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Drivers\\DriverRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Drivers\\DriverRepository.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Drivers\\DriverRepository.cs",
+              "RelativeToolTip": "Repositories\\Drivers\\DriverRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAmwBwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:06:45.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Driver.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Driver.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Driver.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Driver.cs",
+              "RelativeToolTip": "Models\\Entities\\Driver.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA9wAcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:37:53.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Vechile.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Vechile.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Vechile.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Vechile.cs",
+              "RelativeToolTip": "Models\\Entities\\Vechile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T06:31:06.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TaxiBookingContext.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Context\\TaxiBookingContext.cs",
+              "RelativeDocumentMoniker": "Context\\TaxiBookingContext.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Context\\TaxiBookingContext.cs",
+              "RelativeToolTip": "Context\\TaxiBookingContext.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBkAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:24:29.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PassengerController.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\PassengerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PassengerController.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Controllers\\PassengerController.cs",
+              "RelativeToolTip": "Controllers\\PassengerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:15:24.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "VehicleDto.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\VehicleDto.cs",
+              "RelativeDocumentMoniker": "DTO\\VehicleDto.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\VehicleDto.cs",
+              "RelativeToolTip": "DTO\\VehicleDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T05:12:51.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RideHistoryDto.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\RideHistoryDto.cs",
+              "RelativeDocumentMoniker": "DTO\\RideHistoryDto.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\DTO\\RideHistoryDto.cs",
+              "RelativeToolTip": "DTO\\RideHistoryDto.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:28:18.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "LocationProfile.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\LocationProfile.cs",
+              "RelativeDocumentMoniker": "Profiles\\LocationProfile.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\LocationProfile.cs",
+              "RelativeToolTip": "Profiles\\LocationProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T10:44:49.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ResponseProfile.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\ResponseProfile.cs",
+              "RelativeDocumentMoniker": "Profiles\\ResponseProfile.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\ResponseProfile.cs",
+              "RelativeToolTip": "Profiles\\ResponseProfile.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:32:43.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "VehicleProfile.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\VehicleProfile.cs",
+              "RelativeDocumentMoniker": "Profiles\\VehicleProfile.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\VehicleProfile.cs",
+              "RelativeToolTip": "Profiles\\VehicleProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:32:33.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AuthenticationProfile.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\AuthenticationProfile.cs",
+              "RelativeDocumentMoniker": "Profiles\\AuthenticationProfile.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Profiles\\AuthenticationProfile.cs",
+              "RelativeToolTip": "Profiles\\AuthenticationProfile.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:32:37.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IRideService.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Rides\\IRideService.cs",
+              "RelativeDocumentMoniker": "Services\\Rides\\IRideService.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Rides\\IRideService.cs",
+              "RelativeToolTip": "Services\\Rides\\IRideService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wAwAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T03:31:20.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IRideRepository.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Rides\\IRideRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Rides\\IRideRepository.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Rides\\IRideRepository.cs",
+              "RelativeToolTip": "Repositories\\Rides\\IRideRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAsAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T10:45:38.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "GeoUtils.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Helpers\\GeoUtils.cs",
+              "RelativeDocumentMoniker": "Helpers\\GeoUtils.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Helpers\\GeoUtils.cs",
+              "RelativeToolTip": "Helpers\\GeoUtils.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:24:15.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "PassengerService.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\PassengerService.cs",
+              "RelativeDocumentMoniker": "Services\\Passengers\\PassengerService.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\PassengerService.cs",
+              "RelativeToolTip": "Services\\Passengers\\PassengerService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwDIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T04:48:30.841Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
               "Title": "PassengerRepository.cs",
               "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Passengers\\PassengerRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\Passengers\\PassengerRepository.cs",
               "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Passengers\\PassengerRepository.cs",
               "RelativeToolTip": "Repositories\\Passengers\\PassengerRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T04:51:05.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-11T04:51:05.62Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 32,
+              "Title": "LatLng.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\LatLng.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\LatLng.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\LatLng.cs",
+              "RelativeToolTip": "Models\\Entities\\LatLng.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T10:39:00.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Passenger.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Passenger.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Passenger.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Passenger.cs",
+              "RelativeToolTip": "Models\\Entities\\Passenger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T10:41:23.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Location.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Location.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\Location.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Location.cs",
+              "RelativeToolTip": "Models\\Entities\\Location.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T04:49:58.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IPassengerService.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\IPassengerService.cs",
+              "RelativeDocumentMoniker": "Services\\Passengers\\IPassengerService.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\IPassengerService.cs",
+              "RelativeToolTip": "Services\\Passengers\\IPassengerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T04:50:46.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IDriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Drivers\\IDriverRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Drivers\\IDriverRepository.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Drivers\\IDriverRepository.cs",
+              "RelativeToolTip": "Repositories\\Drivers\\IDriverRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:44:25.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "DriverLocationBroadcastService.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\DriverLocationBroadcastService.cs",
+              "RelativeDocumentMoniker": "Services\\DriverLocationBroadcastService.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\DriverLocationBroadcastService.cs",
+              "RelativeToolTip": "Services\\DriverLocationBroadcastService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBAAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:24:42.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IDriverService.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Drivers\\IDriverService.cs",
+              "RelativeDocumentMoniker": "Services\\Drivers\\IDriverService.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Drivers\\IDriverService.cs",
+              "RelativeToolTip": "Services\\Drivers\\IDriverService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:46:11.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
               "Title": "IPassengerRepository.cs",
               "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Repositories\\Passengers\\IPassengerRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\Passengers\\IPassengerRepository.cs",
@@ -95,52 +669,12 @@
               "RelativeToolTip": "Repositories\\Passengers\\IPassengerRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T04:50:58.143Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IPassengerService.cs",
-              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\IPassengerService.cs",
-              "RelativeDocumentMoniker": "Services\\Passengers\\IPassengerService.cs",
-              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\IPassengerService.cs",
-              "RelativeToolTip": "Services\\Passengers\\IPassengerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T04:50:46.581Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PassengerService.cs",
-              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\PassengerService.cs",
-              "RelativeDocumentMoniker": "Services\\Passengers\\PassengerService.cs",
-              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Services\\Passengers\\PassengerService.cs",
-              "RelativeToolTip": "Services\\Passengers\\PassengerService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwC8AAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T04:48:30.841Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Ride.cs",
-              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Ride.cs",
-              "RelativeDocumentMoniker": "Models\\Entities\\Ride.cs",
-              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Models\\Entities\\Ride.cs",
-              "RelativeToolTip": "Models\\Entities\\Ride.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T04:36:45.044Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-11T04:50:58.143Z"
             }
           ]
         },
         {
-          "DockedHeight": 7,
+          "DockedHeight": 76,
           "SelectedChildIndex": 4,
           "Children": [
             {
@@ -161,15 +695,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "20250611043741_cancellation-reason-added.cs",
-              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Migrations\\20250611043741_cancellation-reason-added.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250611043741_cancellation-reason-added.cs",
-              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Migrations\\20250611043741_cancellation-reason-added.cs",
-              "RelativeToolTip": "Migrations\\20250611043741_cancellation-reason-added.cs",
+              "DocumentIndex": 17,
+              "Title": "20250613064320_ride-vehicleType-added.cs",
+              "DocumentMoniker": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Migrations\\20250613064320_ride-vehicleType-added.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250613064320_ride-vehicleType-added.cs",
+              "ToolTip": "C:\\Users\\aayush.garg\\source\\repos\\Taxi Booking\\Migrations\\20250613064320_ride-vehicleType-added.cs",
+              "RelativeToolTip": "Migrations\\20250613064320_ride-vehicleType-added.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T04:37:41.977Z",
+              "WhenOpened": "2025-06-13T06:43:20.935Z",
               "EditorCaption": ""
             }
           ]

@@ -58,7 +58,7 @@ namespace Taxi_Booking.Repositories.Drivers
                 return false;
 
             if (driver.Location == null)
-                driver.Location = new DriverLocation();
+                driver.Location = new LatLng();
 
             driver.Location.Latitude = latitude;
             driver.Location.Longitude = longitude;
@@ -70,6 +70,13 @@ namespace Taxi_Booking.Repositories.Drivers
         public async Task<Driver> GetDriverWithVehicleByIdAsync(int driverId)
         {
             return await _taxiContext.Driver.Include(d => d.DriverVehicle).FirstOrDefaultAsync(d => d.Id == driverId);
+        }
+
+        public async Task<Boolean> UpdateDriver(Driver driver)
+        {
+            _taxiContext.Update(driver);
+            await _taxiContext.SaveChangesAsync();
+            return true;
         }
 
     }

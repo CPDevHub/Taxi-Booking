@@ -8,7 +8,9 @@ namespace Taxi_Booking.Models.Entities
         public int Id { get; set; }
         public string Name { get; set; }           
         public int TotalRides { get; set; }        
-        public double? Rating { get; set; }        
+        public double? Rating { get; set; }    
+        
+        public double TotalEarnings { get; set; }
         public string AvatarUrl { get; set; }
 
         public string ContactNumber { get; set; }
@@ -16,7 +18,7 @@ namespace Taxi_Booking.Models.Entities
         public string Email { get; set; }
         public string PasswordHash { get; set; }
 
-        public DriverLocation Location { get; set; }
+        public LatLng Location { get; set; }
 
         public DriverStatus Status { get; set; }
         public int VehicleId { get; set; }

@@ -16,5 +16,6 @@ namespace Taxi_Booking.Services.Drivers
         public Task<Driver> GetDriverWithVehicleByIdAsync(int driverId);
 
         public Task<Boolean> UpdateDriverLocation(int driverId, double latitude, double longitude);
+        public Task<Boolean> UpdateDriver(Driver driver);
     }
 }

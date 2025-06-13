@@ -2,7 +2,7 @@
 
 namespace Taxi_Booking.Models.Entities
 {
-    public class DriverLocation
+    public class LatLng
     {
         public double Latitude { get; set; }
 

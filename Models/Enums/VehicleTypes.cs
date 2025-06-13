@@ -2,10 +2,8 @@
 {
     public enum VehicleType
     {
-        Sedan,
-        SUV,
-        Hatchback,
-        Auto,
-        Bike
+        Sedan=20,
+        SUV=15,
+        Hatchback=10,
     }
 }

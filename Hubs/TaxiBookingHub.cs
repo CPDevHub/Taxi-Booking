@@ -23,7 +23,7 @@ namespace Taxi_Booking.Hubs
         private readonly IRideService _rideService;
         private readonly ISignalRService _signalrService;
         private readonly ILogger<TaxiBookingHub> _logger;
-        public static Dictionary<string, (int DriverId, DriverLocation Location)> _availableConnections = new();
+        public static Dictionary<string, (int DriverId, LatLng Location)> _availableConnections = new();
         public static Dictionary<int, List<int>> _userRideAvailableDrivers = new();
         public static Dictionary<int, string> PassengerConnections = new();
         public static Dictionary<int, string> DriverConnections = new();
@@ -75,7 +75,6 @@ namespace Taxi_Booking.Hubs
                 _logger.LogInformation("Sent initial SendLocation event to Driver {DriverId}", driverId);
 
             }
-            
         }
 
         public async Task LoginPassenger(int passengerId)
@@ -86,7 +85,7 @@ namespace Taxi_Booking.Hubs
         }
 
 
-        public async Task UpdateLocation(DriverLocation dto)
+        public async Task UpdateLocation(LatLng dto)
         {
             var driverIdStr = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (driverIdStr != null)
@@ -96,6 +95,29 @@ namespace Taxi_Booking.Hubs
                 _availableConnections[Context.ConnectionId] = (driverId, dto);
                 _logger.LogInformation("Updated location for Driver {DriverId}: ({Latitude}, {Longitude})", driverId, dto.Latitude, dto.Longitude);
             }
+        }
+
+        public async Task RideStart(int rideId)
+        {
+            var driverIdStr = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (driverIdStr == null)
+            {
+                _logger.LogWarning("AcceptRide failed: Driver not authenticated.");
+                return;
+            }
+            int driverId = Convert.ToInt32(driverIdStr);
+            Ride ride = await _rideService.GetRideByID(rideId);
+            ride.Status = RideStatus.OnGoing;
+            ride.RideStartAt = DateTime.UtcNow;
+            _rideService.UpdateRide(ride);
+
+            string passengerConnectionId = PassengerConnections[ride.PassengerId];
+            if (passengerConnectionId != null)
+            {
+                await Clients.Client(passengerConnectionId).SendAsync("RideStart");
+            }
+
+
         }
 
         public async Task AcceptRide(int rideId)
@@ -108,25 +130,32 @@ namespace Taxi_Booking.Hubs
             }
             int driverId = Convert.ToInt32(driverIdStr);
             Ride ride = await _rideService.GetRideByID(rideId);
+            if (ride.Status == RideStatus.Accepted)
+            {
+                _logger.LogWarning("AcceptRide failed: Ride Already Accepted.");
+                await Clients.Caller.SendAsync("RideAlreadyAccepted", new
+                {
+                    RideId = ride.Id
+                });
+            }
             Driver driver = await _driverService.GetDriverWithVehicleByIdAsync(driverId);
             var passenger = await _passengerService.GetPassengerByIdAsync(ride.PassengerId);
 
-            if (ride == null)
-            {
-                _logger.LogWarning("AcceptRide failed: Ride not found or already accepted.");
-                return;
-            }
             ride.DriverId = driverId;
             ride.Status = RideStatus.Accepted;
             await _rideService.UpdateRide(ride);
+            await _driverService.UpdateDriverStatus(DriverStatus.Busy, driverId);
 
             _logger.LogInformation("Driver {DriverId} accepted ride {RideId}", driverId, rideId);
-            await Clients.Group($"User_{ride.PassengerId}").SendAsync("RideAcceptedUserNotify", new{
+            await Clients.Group($"User_{ride.PassengerId}").SendAsync("RideAcceptedUserNotify", new
+            {
                 RideId = ride.Id,
                 DriverId = ride.DriverId,
                 DriverName = ride.RideDriver?.Name,
                 VehicleNumber = driver.DriverVehicle?.Number,
-                VehicleModel = driver.DriverVehicle?.Model
+                VehicleModel = driver.DriverVehicle?.Model,
+                fare = ride.TotalFare,
+                previousCancellationCharges = passenger.CancellationCharges
             });
 
 
@@ -165,11 +194,42 @@ namespace Taxi_Booking.Hubs
                         ride.DropOffLocation?.Address
                     },
                     PassengerName = passenger.Name,
-                    ContactNumber = passenger.ContactNumber
+                    ContactNumber = passenger.ContactNumber,
+                    fare = ride.TotalFare,
+                    previousCancellationCharges = passenger.CancellationCharges
                 });
 
                 TaxiBookingHub._userRideAvailableDrivers.Remove(rideId);
             }
+
+        }
+
+        public async Task CompleteRide(int rideId)
+        {
+            var driverIdStr = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (driverIdStr == null)
+            {
+                _logger.LogWarning("CancelRide failed: Driver not authenticated.");
+                return;
+            }
+            int driverId = Convert.ToInt32(driverIdStr);
+            Ride ride = await _rideService.GetRideByID(rideId);
+            ride.Status = RideStatus.Completed;
+            ride.RideEndAt = DateTime.UtcNow;
+            Driver driver = await _driverService.GetDriverByIdAsync(driverId);
+
+            driver.TotalRides++;
+            driver.Status = DriverStatus.Available;
+            driver.TotalEarnings += ride.TotalFare;
+
+            await _driverService.UpdateDriver(driver);
+
+            string passengerConnectionId = PassengerConnections[ride.PassengerId];
+            if (passengerConnectionId != null)
+            {
+                await Clients.Client(passengerConnectionId).SendAsync("RideCompleted");
+            }
+
 
         }
 
@@ -192,6 +252,7 @@ namespace Taxi_Booking.Hubs
             ride.Status = RideStatus.Cancelled;
             ride.DriverId = null;
             await _rideService.UpdateRide(ride);
+            await _driverService.UpdateDriverStatus(DriverStatus.Available, driverId);
 
 
             if (PassengerConnections.TryGetValue(ride.PassengerId, out var userConnectionId))
@@ -223,6 +284,7 @@ namespace Taxi_Booking.Hubs
             ride.Status = RideStatus.Cancelled;
             ride.CancellationReason = reason;
             await _rideService.UpdateRide(ride);
+            await _driverService.UpdateDriverStatus(DriverStatus.Available, ride.DriverId);
 
 
             passenger.CancellationCharges = 0.05 * ride.TotalFare;

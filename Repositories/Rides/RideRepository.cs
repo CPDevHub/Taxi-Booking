@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Taxi_Booking.Context;
 using Taxi_Booking.DTO;
+using Taxi_Booking.Helpers;
 using Taxi_Booking.Models.Entities;
 using Taxi_Booking.Models.Enums;
 
@@ -10,13 +12,18 @@ namespace Taxi_Booking.Repositories.Rides
     {
         private readonly ILogger<RideRepository> _logger;
         private readonly TaxiBookingContext _bookingContext;
-        public RideRepository(TaxiBookingContext bookingContext, ILogger<RideRepository> logger)
+        private readonly IMapper _mapper;
+        public RideRepository(TaxiBookingContext bookingContext, ILogger<RideRepository> logger, IMapper mapper)
         {
             _logger = logger;
             _bookingContext = bookingContext;
+            _mapper = mapper;
         }
         public async Task<Ride> CreateRide(CreateRideRequestDto rideRequest)
         {
+            
+            double distance = GeoUtils.GetDistanceInKm(_mapper.Map<LatLng>(rideRequest.PickupLocation),_mapper.Map<LatLng>(rideRequest.DropOffLocation));
+            var ratePerKm = (int)rideRequest.RideVehicle;
             var ride = new Ride
             {
                 Status = RideStatus.Requested,
@@ -24,6 +31,8 @@ namespace Taxi_Booking.Repositories.Rides
                 PickupLocation = rideRequest.PickupLocation,
                 DropOffLocation = rideRequest.DropOffLocation,
                 PassengerId = rideRequest.PassengerId,
+                TotalFare = distance * ratePerKm,
+                RideVehicle=rideRequest.RideVehicle
             };
             _bookingContext.Ride.Add(ride);
             await _bookingContext.SaveChangesAsync();
@@ -41,6 +50,23 @@ namespace Taxi_Booking.Repositories.Rides
             _bookingContext.Ride.Update(ride);
             await _bookingContext.SaveChangesAsync();
             return true;
+        }
+
+
+        public async Task<List<Ride>> GetDriverHistoryAsync(int driverId)
+        {
+            return await _bookingContext.Ride
+                .Where(r => r.DriverId == driverId)
+                .OrderByDescending(r => r.RideStartAt)
+                .ToListAsync();
+        }
+
+        public async Task<List<Ride>> GetPassengerHistoryAsync(int passengerId)
+        {
+            return await _bookingContext.Ride
+                .Where(r => r.PassengerId == passengerId)
+                .OrderByDescending(r => r.RideStartAt)
+                .ToListAsync();
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Taxi_Booking.Helpers
 {
     public static class GeoUtils
     {
-        public static double GetDistanceInKm(DriverLocation loc1, Location loc2)
+        public static double GetDistanceInKm(LatLng loc1, LatLng loc2)
         {
             var R = 6371; // Radius of Earth in km
             var dLat = DegreesToRadians(loc2.Latitude - loc1.Latitude);

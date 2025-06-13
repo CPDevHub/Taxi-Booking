@@ -10,5 +10,7 @@ namespace Taxi_Booking.Services.Passengers
 
         public Task<Passenger> GetPassengerByIdAsync(int passengerId);
         public Task<Boolean> UpdatePassenger(Passenger passenger);
+
+        
     }
 }

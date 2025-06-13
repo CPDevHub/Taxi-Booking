@@ -8,6 +8,6 @@ namespace Taxi_Booking.DTO
         public Location PickupLocation { get; set; }
         public Location DropOffLocation { get; set; }
         public int PassengerId { get; set; }
-        //public VehicleType PreferenceVehicle { get; set; }
+        public VehicleType RideVehicle { get; set; }
     }
 }

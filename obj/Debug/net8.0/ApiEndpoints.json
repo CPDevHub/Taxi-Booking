@@ -74,6 +74,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Taxi_Booking.Controllers.DriverController",
+    "Method": "GetHistory",
+    "RelativePath": "api/v1/driver/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Taxi_Booking.Controllers.PassengerController",
+    "Method": "GetHistory",
+    "RelativePath": "api/v1/passenger/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Taxi_Booking.Controllers.RideController",
     "Method": "BookRide",
     "RelativePath": "api/v1/ride/book",

@@ -141,6 +141,30 @@
         }
       }
     },
+    "/api/v1/driver/history": {
+      "get": {
+        "tags": [
+          "Driver"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/passenger/history": {
+      "get": {
+        "tags": [
+          "Passenger"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/ride/book": {
       "post": {
         "tags": [
@@ -187,6 +211,9 @@
           "passengerId": {
             "type": "integer",
             "format": "int32"
+          },
+          "rideVehicle": {
+            "$ref": "#/components/schemas/VehicleType"
           }
         },
         "additionalProperties": false
@@ -318,11 +345,9 @@
       },
       "VehicleType": {
         "enum": [
-          "Sedan",
-          "SUV",
           "Hatchback",
-          "Auto",
-          "Bike"
+          "SUV",
+          "Sedan"
         ],
         "type": "string"
       }

@@ -22,6 +22,7 @@ namespace Taxi_Booking.Context
         {
 
             modelBuilder.Entity<Vehicle>().Property(vehicle => vehicle.Type).HasConversion<string>();
+            modelBuilder.Entity<Ride>().Property(ride => ride.RideVehicle).HasConversion<string>();
             modelBuilder.Entity<Ride>().Property(ride => ride.Status).HasConversion<string>();
             modelBuilder.Entity<Driver>().Property(driver => driver.Status).HasConversion<string>();
 

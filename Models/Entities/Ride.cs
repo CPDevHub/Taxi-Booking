@@ -16,6 +16,7 @@ namespace Taxi_Booking.Models.Entities
         public string? CancellationReason { get; set; }
         public int PassengerId { get; set; }
         public Passenger RidePassenger { get; set; }
+        public VehicleType RideVehicle { get; set; }
         public int ?DriverId { get; set; }
         public Driver ?RideDriver { get; set; }
     }

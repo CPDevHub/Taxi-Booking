@@ -49,7 +49,7 @@ namespace Taxi_Booking.Services.Drivers
             driverToRegister.PasswordHash = _passwordHasher.Hash(driver.Password);
             driverToRegister.DriverVehicle = vehicleRegistered;
             driverToRegister.VehicleId = vehicleRegistered.Id;
-            driverToRegister.Status = DriverStatus.Unavailable;
+            driverToRegister.Status = DriverStatus.Available;
             _logger.LogInformation("Service: Saving new driver with email: {Email}", driver.Email);
             return await _driverRepository.CreateDriverAsync(driverToRegister);
         }
@@ -72,6 +72,11 @@ namespace Taxi_Booking.Services.Drivers
         public async Task<Driver> GetDriverWithVehicleByIdAsync(int driverId)
         {
             return await _driverRepository.GetDriverWithVehicleByIdAsync(driverId);
+        }
+
+        public async Task<Boolean> UpdateDriver(Driver driver)
+        {
+            return await _driverRepository.UpdateDriver(driver);
         }
     }
 }
