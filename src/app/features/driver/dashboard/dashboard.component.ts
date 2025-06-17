@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DriverService } from 'src/app/core/services/driver.service';
+import { DriverDashboard } from 'src/app/shared/types/driverDashboard.type';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  driver!:DriverDashboard
+  constructor(private driverService:DriverService) { }
 
   ngOnInit(): void {
+    this.driverService.getDashboardData().subscribe((data:DriverDashboard)=>{
+      console.log(data)
+      this.driver=data;
+    })
   }
 
 }

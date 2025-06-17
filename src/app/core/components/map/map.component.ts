@@ -26,14 +26,19 @@ export class MapComponent implements OnChanges {
       ['esri/Map', 'esri/views/MapView', 'esri/Graphic'],
       (Map: any, MapView: any, Graphic: any) => {
         const map = new Map({ basemap: 'streets-navigation-vector' });
+
         this.view = new MapView({
           container: this.mapViewEl.nativeElement,
           map,
-          center: [75.7873, 26.9124],
-          zoom: 13,
+          zoom: 15,
         });
+        this.view.ui.components = [];
 
         navigator.geolocation.getCurrentPosition((pos) => {
+          this.view.center = {
+            longitude: pos.coords.longitude,
+            latitude: pos.coords.latitude,
+          };
           const userGraphic = new Graphic({
             geometry: {
               type: 'point',
@@ -71,7 +76,11 @@ export class MapComponent implements OnChanges {
         this.routeLayer.removeAll();
 
         const pickupPoint = new Graphic({
-          geometry: this.pickupCoords,
+          geometry: {
+            type: 'point',
+            longitude: this.pickupCoords.longitude,
+            latitude: this.pickupCoords.latitude,
+          },
           symbol: {
             type: 'picture-marker',
             url: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
@@ -81,7 +90,11 @@ export class MapComponent implements OnChanges {
         });
 
         const dropoffPoint = new Graphic({
-          geometry: this.dropoffCoords,
+          geometry: {
+            type: 'point',
+            longitude: this.dropoffCoords.longitude,
+            latitude: this.dropoffCoords.latitude,
+          },
           symbol: {
             type: 'picture-marker',
             url: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
@@ -96,11 +109,24 @@ export class MapComponent implements OnChanges {
           'https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/solve';
 
         const params: any = {
-          stops: `{"features":[
-        {"geometry":{"x":${this.pickupCoords.longitude},"y":${this.pickupCoords.latitude}}},
-        {"geometry":{"x":${this.dropoffCoords.longitude},"y":${this.dropoffCoords.latitude}}}
-      ]}`,
+          stops: JSON.stringify({
+            features: [
+              {
+                geometry: {
+                  x: this.pickupCoords.longitude,
+                  y: this.pickupCoords.latitude,
+                },
+              },
+              {
+                geometry: {
+                  x: this.dropoffCoords.longitude,
+                  y: this.dropoffCoords.latitude,
+                },
+              },
+            ],
+          }),
           f: 'json',
+          // token: 'AAPTxy8BH1VEsoebNVZXo8HurHaR50a1_97u0-hAt3_ovHrfT-byZXpAx1e6HChPcal5rujCZN98h2Ora1CTml61SQAyPkaNXG-6oIhYS_au-93XIZbkTEmLlldcR3_V2QAz7Dil9SMqA_oQBg9yHqCqvTxVuo7PwysjqTV5hyU0T-ax4AYbOpahxyZw6QJuKxgdC2NF0pSdKxBpQbH-wyzpUKbr8XFxEMsbb6tHWsOzwGc.AT1_8LUhHhDW',
         };
 
         esriRequest(routeUrl, {
@@ -111,7 +137,10 @@ export class MapComponent implements OnChanges {
           const features = response.data.routes.features;
           if (features.length) {
             const routeGraphic = new Graphic({
-              geometry: features[0].geometry,
+              geometry: {
+                type: 'polyline',
+                paths: features[0].geometry.paths,
+              },
               symbol: {
                 type: 'simple-line',
                 color: [0, 0, 255, 0.8],

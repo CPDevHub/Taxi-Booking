@@ -41,6 +41,9 @@
     >
       Book Ride
     </button>
+    <button kendoButton look="outline" (click)="cancelRideBeforeAcceptance()">
+      Cancel Ride
+    </button>
   </ng-container>
 
   <ng-template #rideInfo>
@@ -76,5 +79,6 @@
         </kendo-button>
       </kendo-card-actions>
     </kendo-card>
+    <app-rating (submitted)="ratingSubmitted()" *ngIf="rideCompleted" [driverId]="rideDetails?.driverId"> </app-rating>
   </ng-template>
 </div>

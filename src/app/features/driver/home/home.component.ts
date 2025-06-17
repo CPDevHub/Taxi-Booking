@@ -38,6 +38,14 @@ export class DriverHomeComponent implements OnInit {
       this.rideRequests.push(ride);
     });
 
+    this.signalRService.rideCancelledByPassengerBeforeAccept$.subscribe(
+      (data: RideCancelType) => {
+        this.rideRequests = this.rideRequests.filter(
+          (ride) => ride.id !== data.rideId
+        );
+      }
+    );
+
     this.signalRService.rideCancelledByPassenger$.subscribe(
       (data: RideCancelType) => {
         this.rideDetails = null;
@@ -80,7 +88,7 @@ export class DriverHomeComponent implements OnInit {
     }
   }
 
-  startRide(){
+  startRide() {
     if (this.rideDetails?.rideId) {
       const rideId = this.rideDetails.rideId;
       this.signalRService.startRide(rideId);

@@ -1,1 +1,54 @@
-<p>dashboard works!</p>
+<button kendoButton look="default" class="k-button-solid-primary" routerLink="../">Back</button>
+<div class="dashboard-grid">
+  <kendo-card class="dashboard-card">
+    <kendo-card-body>
+      <div class="card-header">
+        <kendo-icon name="car" size="large"></kendo-icon>
+        <h3>Total Rides</h3>
+      </div>
+      <div class="card-value">{{ driver.totalRides }}</div>
+    </kendo-card-body>
+  </kendo-card>
+
+  <kendo-card class="dashboard-card">
+    <kendo-card-body>
+      <div class="card-header">
+        <kendo-icon name="dollar" size="large"></kendo-icon>
+        <h3>Total Earnings</h3>
+      </div>
+      <div class="card-value">₹{{ driver.totalEarnings | number:'1.0-2' }}</div>
+    </kendo-card-body>
+  </kendo-card>
+
+  <!-- <kendo-card class="dashboard-card">
+    <kendo-card-body>
+      <div class="card-header">
+        <kendo-icon name="star" size="large"></kendo-icon>
+        <h3>Avg. Rating</h3>
+      </div>
+      <div class="card-value">{{ driver.rating }}</div>
+    </kendo-card-body>
+  </kendo-card> -->
+
+
+  <kendo-card class="dashboard-card">
+    <kendo-card-body>
+      <div class="card-header">
+        <kendo-icon name="gear" size="large"></kendo-icon>
+        <h3>Vehicle</h3>
+      </div>
+      <div class="card-value">{{ driver.carType }}</div>
+    </kendo-card-body>
+  </kendo-card>
+
+  <kendo-card class="dashboard-card">
+    <kendo-card-body>
+      <div class="card-header">
+        <kendo-icon name="check" size="large"></kendo-icon>
+        <h3>Status</h3>
+      </div>
+      <div class="card-value" [ngClass]="driver.status.toLowerCase()">{{ driver.status }}</div>
+    </kendo-card-body>
+  </kendo-card>
+</div>
+

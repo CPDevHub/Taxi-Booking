@@ -41,6 +41,8 @@ import { RideHistoryComponent } from './core/pages/history/history.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { PassengerLayoutComponent } from './features/passenger/passenger-layout/passenger-layout.component';
 import { DriverLayoutComponent } from './features/driver/driver-layout/driver-layout.component';
+import { RatingComponent } from './core/components/rating/rating.component';
+
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { DriverLayoutComponent } from './features/driver/driver-layout/driver-la
     RideHistoryComponent,
     PassengerLayoutComponent,
     DriverLayoutComponent,
+    RatingComponent,
+    
   ],
   imports: [
     BrowserModule,

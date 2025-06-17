@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { asNativeElements, Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { SignalrService } from 'src/app/core/services/signalrService.service';
 import { rideAcceptType } from 'src/app/shared/types/rideAccept.type';
@@ -43,14 +43,9 @@ export class PassengerHomeComponent implements OnInit {
       this.rideDetails = null;
     });
 
-    this.signalr.rideCompleted$.subscribe(() => {
-      console.log('Ride completed');
-      this.rideDetails=null;
-    });
-
     this.signalr.rideStart$.subscribe(() => {
       console.log('ride started');
-      this.rideDetails=null;
+      this.rideDetails = null;
     });
   }
 
@@ -65,5 +60,9 @@ export class PassengerHomeComponent implements OnInit {
 
   closeModal() {
     this.cancelRideModal = false;
+  }
+  
+  rideCompleted() {
+    this.rideDetails = null;
   }
 }

@@ -1,1 +1,16 @@
-<p>settings works!</p>
+<button
+  kendoButton
+  look="default"
+  class="k-button-solid-primary"
+  routerLink="../"
+>
+  Back
+</button>
+<div class="status-toggle">
+  <label>Status: {{ driver.status }}</label>
+  <kendo-switch
+    [checked]="driver.status === 'Available' || driver.status === 'Busy'"
+    (valueChange)="onStatusToggle()"
+    [disabled]="driver.status === 'Busy'"
+  ></kendo-switch>
+</div>

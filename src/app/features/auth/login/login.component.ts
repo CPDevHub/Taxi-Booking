@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
     if (this.reactiveForm.valid) {
       this.authService.login(this.reactiveForm.value, this.userType).subscribe({
         next: (res: any) => {
-          console.log(this.userType)
           if (this.userType === 'passenger')
             this.signarRService.loginPassenger(res.data.response.id);
           else this.signarRService.loginDriver(res.data.response.id);
 
           sessionStorage.setItem('access_token', res.data.token);
+          this.signarRService.connect();
           this.router.navigateByUrl(`${this.userType}`);
         },
         error: (err) => {

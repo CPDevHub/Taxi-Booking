@@ -1,16 +1,27 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Console } from 'console';
 import { RideService } from 'src/app/core/services/ride.service';
+import { SignalrService } from 'src/app/core/services/signalrService.service';
 import { VehicleType } from 'src/app/shared/enums/vehicleType.enums';
 import { rideAcceptType } from 'src/app/shared/types/rideAccept.type';
+import { RideBookResponseType } from 'src/app/shared/types/rideBookResponse.type';
 import { rideDetailsType } from 'src/app/shared/types/rideDetails.type';
+import { RideRequestType } from 'src/app/shared/types/rideRequrest.type';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent implements OnInit {
   pickupSuggestions: any[] = [];
   dropoffSuggestions: any[] = [];
   carTypes = Object.values(VehicleType);
@@ -18,17 +29,27 @@ export class SidebarComponent implements OnInit{
 
   pickupLocation: any = null;
   dropOffLocation: any = null;
+  rideResponse!: RideBookResponseType;
+  rideCompleted: boolean = false;
 
-  @Input() rideDetails:rideAcceptType | null=null;
-  @Output() cancelRideModal=new EventEmitter<void>;
+  @Input() rideDetails: rideAcceptType | null = null;
+  @Output() cancelRideModal = new EventEmitter<void>();
 
   @Output() pickupSelected = new EventEmitter<any>();
   @Output() dropoffSelected = new EventEmitter<any>();
+  @Output() completeAndSubmit = new EventEmitter();
 
-  constructor(private rideService: RideService) {}
+  constructor(
+    private rideService: RideService,
+    private signalrService: SignalrService
+  ) {}
 
-  ngOnInit(){
-    console.log("ride details:",this.rideDetails);
+  ngOnInit() {
+    console.log('ride details:', this.rideDetails);
+    this.signalrService.rideCompleted$.subscribe(() => {
+      this.rideCompleted = true;
+      console.log(this.rideCompleted)
+    });
   }
 
   private fetchSuggestions(query: string, callback: (results: any[]) => void) {
@@ -119,12 +140,22 @@ export class SidebarComponent implements OnInit{
       .bookRide({
         pickupLocation: this.pickupLocation,
         dropOffLocation: this.dropOffLocation,
-        rideVehicle:this.selectedCarType
+        rideVehicle: this.selectedCarType,
       })
-      .subscribe(() => {});
+      .subscribe((data: RideBookResponseType) => {
+        this.rideResponse = data;
+      });
   }
 
-  onCancelRide(){
+  onCancelRide() {
     this.cancelRideModal.emit();
+  }
+
+  cancelRideBeforeAcceptance() {
+    this.signalrService.cancelRideBeforeAcceptance(this.rideResponse.rideId);
+  }
+
+  ratingSubmitted() {
+    this.completeAndSubmit.emit();
   }
 }

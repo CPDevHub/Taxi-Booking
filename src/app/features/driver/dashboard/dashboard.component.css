@@ -1,0 +1,33 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.dashboard-card {
+  background-color: #f9fbff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a5568;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin-top: 0.5rem;
+}
+
+.online {
+  color: green;
+}
+.offline {
+  color: red;
+}

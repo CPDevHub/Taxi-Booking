@@ -6,13 +6,13 @@ import { SignalrService } from './core/services/signalrService.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   title = 'taxi-booking';
 
   constructor(private signalRService: SignalrService) {}
 
   ngOnInit(): void {
-    this.signalRService.connect().catch(console.error);
+    this.signalRService.connect();
   }
 
   ngOnDestroy(): void {
