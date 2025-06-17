@@ -1,5 +1,4 @@
-﻿using Taxi_Booking.Models.Entities;
-using Taxi_Booking.Models.Enums;
+﻿using Taxi_Booking.Models;
 
 namespace Taxi_Booking.DTO
 {

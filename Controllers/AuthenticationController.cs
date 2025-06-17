@@ -5,21 +5,21 @@ using Taxi_Booking.Services.Drivers;
 using Taxi_Booking.Services.Passengers;
 using Taxi_Booking.Services.Token;
 using Taxi_Booking.Exceptions;
-using Taxi_Booking.Models.Responses;
+using Taxi_Booking.Models;
 using Taxi_Booking.DTO.Responses;
 using AutoMapper;
 using System;
-using Taxi_Booking.Models.Enums;
+using Taxi_Booking.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Taxi_Booking.Hubs;
-using Taxi_Booking.Models.Entities;
+using Taxi_Booking.Models;
+using Taxi_Booking.Constants;
 
 
 namespace Taxi_Booking.Controllers
 {
-    [Route("api/v1/auth")]
     [ApiController]
     public class AuthenticationController:ControllerBase
     {
@@ -40,7 +40,7 @@ namespace Taxi_Booking.Controllers
             _taxiHub = taxiHub;
             _mapper = mapper;
         }
-        [HttpPost("passenger-login")]
+        [HttpPost(ApiRoutes.Authentication.PassengerLogin)]
         public async Task<IActionResult> PassengerLogin([FromBody] LoginDto loginDetails)
         {
             _logger.LogInformation("Login attempt for email: {Email}", loginDetails.Email);
@@ -49,7 +49,7 @@ namespace Taxi_Booking.Controllers
                 var errorMessages = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
 
                 _logger.LogWarning("Login validation failed for email: {Email}. Errors: {Errors}",
-           loginDetails.Email, string.Join(", ", errorMessages));
+                loginDetails.Email, string.Join(", ", errorMessages));
                 throw new ValidationException("Validation Failed", errorMessages);
             }
 
@@ -78,7 +78,7 @@ namespace Taxi_Booking.Controllers
 
             return Ok(new ApiResponse<object>("Login successful", true,loginResult));
         }
-        [HttpPost("passenger-signup")]
+        [HttpPost(ApiRoutes.Authentication.PassengerSignup)]
         public async Task<IActionResult> PassengerSignup([FromBody] PassengerRegisterDto signupDetails)
         {
             _logger.LogInformation("Received signup request for passenger with email: {Email}", signupDetails.Email);
@@ -93,7 +93,7 @@ namespace Taxi_Booking.Controllers
             return Ok(new ApiResponse<string>("Signup Successful", true));
         }
 
-        [HttpPost("driver-login")]
+        [HttpPost(ApiRoutes.Authentication.DriverLogin)]
         public async Task<IActionResult> DriverLogin([FromBody] LoginDto loginDetails)
         {
             _logger.LogInformation("Driver login attempt for email: {Email}", loginDetails.Email);
@@ -131,7 +131,7 @@ namespace Taxi_Booking.Controllers
 
         }
 
-        [HttpPost("driver-signup")]
+        [HttpPost(ApiRoutes.Authentication.DriverSignup)]
         public async Task<IActionResult> DriverSignup([FromBody] DriverRegisterDto signupDetails)
         {
             _logger.LogInformation("Driver signup attempt with email: {Email}", signupDetails.Email);
@@ -146,7 +146,7 @@ namespace Taxi_Booking.Controllers
             return Ok(new ApiResponse<string>("Driver Signup Successful", true));
         }
 
-        [HttpGet("is-authenticated")]
+        [HttpGet(ApiRoutes.Authentication.IsAuthenticated)]
         [Authorize]
         public IActionResult isAuthenticated()
         {

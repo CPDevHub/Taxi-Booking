@@ -2,12 +2,11 @@
 using Taxi_Booking.DTO.Authentication;
 using Taxi_Booking.Exceptions;
 using Taxi_Booking.Helpers;
-using Taxi_Booking.Models.Entities;
 using Taxi_Booking.Repositories.Drivers;
 using Taxi_Booking.Services.Vehicles;
 using Taxi_Booking.DTO;
 using AutoMapper;
-using Taxi_Booking.Models.Enums;
+using Taxi_Booking.Models;
 
 namespace Taxi_Booking.Services.Drivers
 {
@@ -77,6 +76,23 @@ namespace Taxi_Booking.Services.Drivers
         public async Task<Boolean> UpdateDriver(Driver driver)
         {
             return await _driverRepository.UpdateDriver(driver);
+        }
+
+        public async Task<DriverDashboardDto> GetDashboardAsync(int driverId)
+        {
+            return await _driverRepository.GetDashboardAsync(driverId);
+        }
+
+        public async Task<DriverDetailsDto> GetDetailsAsync(int driverId)
+        {
+            return await _driverRepository.GetDetailsAsync(driverId);
+        }
+
+        public async Task<bool> SubmitRatingAsync(int driverId, int rating)
+        {
+
+            return await _driverRepository.SubmitRatingAsync(driverId, rating);
+            
         }
     }
 }

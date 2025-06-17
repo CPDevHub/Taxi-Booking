@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Identity.Client;
 using System.Collections.Concurrent;
 using System.Diagnostics.Metrics;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Claims;
+using Taxi_Booking.Constants;
 using Taxi_Booking.Helpers;
-using Taxi_Booking.Models.Entities;
-using Taxi_Booking.Models.Enums;
+using Taxi_Booking.Models;
 using Taxi_Booking.Services.Drivers;
 using Taxi_Booking.Services.Passengers;
 using Taxi_Booking.Services.Rides;
@@ -71,9 +73,8 @@ namespace Taxi_Booking.Hubs
                 DriverConnections[driverId] = Context.ConnectionId;
                 _logger.LogInformation("Driver {DriverId} added to group 'AvailableDrivers'", driverId);
 
-                await Clients.Client(Context.ConnectionId).SendAsync("SendLocation");
+                await Clients.Client(Context.ConnectionId).SendAsync(SignalREvents.SendLocation);
                 _logger.LogInformation("Sent initial SendLocation event to Driver {DriverId}", driverId);
-
             }
         }
 
@@ -84,6 +85,24 @@ namespace Taxi_Booking.Hubs
             _logger.LogInformation("Passenger {UserId} added to group User_{UserId}", passengerId, passengerId);
         }
 
+        public async Task UpdateStatus(string statusStr)
+        {
+            if (!Enum.TryParse<DriverStatus>(statusStr, out var status))
+            {
+                return;
+            }
+
+            var idStr = Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!int.TryParse(idStr, out var driverId)) return;
+            if (status == DriverStatus.Available)
+            {
+                await Groups.AddToGroupAsync(Context.ConnectionId, "AvailableDrivers");
+                DriverConnections[driverId] = Context.ConnectionId;
+                await Clients.Client(Context.ConnectionId).SendAsync(SignalREvents.SendLocation);
+            }
+            else _availableConnections.Remove(Context.ConnectionId);
+            await _driverService.UpdateDriverStatus(status, driverId);
+        }
 
         public async Task UpdateLocation(LatLng dto)
         {
@@ -114,7 +133,7 @@ namespace Taxi_Booking.Hubs
             string passengerConnectionId = PassengerConnections[ride.PassengerId];
             if (passengerConnectionId != null)
             {
-                await Clients.Client(passengerConnectionId).SendAsync("RideStart");
+                await Clients.Client(passengerConnectionId).SendAsync(SignalREvents.RideStart);
             }
 
 
@@ -133,7 +152,7 @@ namespace Taxi_Booking.Hubs
             if (ride.Status == RideStatus.Accepted)
             {
                 _logger.LogWarning("AcceptRide failed: Ride Already Accepted.");
-                await Clients.Caller.SendAsync("RideAlreadyAccepted", new
+                await Clients.Caller.SendAsync(SignalREvents.RideAlreadyAccepted, new
                 {
                     RideId = ride.Id
                 });
@@ -147,7 +166,7 @@ namespace Taxi_Booking.Hubs
             await _driverService.UpdateDriverStatus(DriverStatus.Busy, driverId);
 
             _logger.LogInformation("Driver {DriverId} accepted ride {RideId}", driverId, rideId);
-            await Clients.Group($"User_{ride.PassengerId}").SendAsync("RideAcceptedUserNotify", new
+            await Clients.Group($"User_{ride.PassengerId}").SendAsync(SignalREvents.RideAcceptedUserNotify, new
             {
                 RideId = ride.Id,
                 DriverId = ride.DriverId,
@@ -170,7 +189,7 @@ namespace Taxi_Booking.Hubs
 
                     if (connectionId != null)
                     {
-                        await Clients.Client(connectionId).SendAsync("RideAlreadyAccepted", new
+                        await Clients.Client(connectionId).SendAsync(SignalREvents.RideAlreadyAccepted, new
                         {
                             RideId = ride.Id
                         });
@@ -179,7 +198,7 @@ namespace Taxi_Booking.Hubs
 
                 var driverConnectionId = TaxiBookingHub._availableConnections
                         .FirstOrDefault(x => x.Value.DriverId == driverId).Key;
-                await Clients.Client(driverConnectionId).SendAsync("RideAcceptedDriverNotify", new {
+                await Clients.Client(driverConnectionId).SendAsync(SignalREvents.RideAcceptedDriverNotify, new {
                     RideId = ride.Id,
                     PickupLocation = new
                     {
@@ -204,6 +223,31 @@ namespace Taxi_Booking.Hubs
 
         }
 
+        public async Task CancelRideBeforeAcceptance(int rideId)
+        {
+            if (!TaxiBookingHub._userRideAvailableDrivers.TryGetValue(rideId, out var driverIds))
+                return;
+
+            Ride ride = await _rideService.GetRideByID(rideId);
+            ride.Status = RideStatus.Cancelled;
+            foreach (var driverId in driverIds)
+            {
+                var connection = TaxiBookingHub._availableConnections
+                    .FirstOrDefault(d => d.Value.DriverId == driverId);
+
+                if (!string.IsNullOrEmpty(connection.Key))
+                {
+                    await Clients.Client(connection.Key)
+                        .SendAsync(SignalREvents.RideCancelledByPassengerBeforeAccept, new
+                        {
+                            RideId = rideId
+                        });
+                }
+            }
+            TaxiBookingHub._userRideAvailableDrivers.Remove(rideId);
+        }
+
+
         public async Task CompleteRide(int rideId)
         {
             var driverIdStr = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -227,7 +271,7 @@ namespace Taxi_Booking.Hubs
             string passengerConnectionId = PassengerConnections[ride.PassengerId];
             if (passengerConnectionId != null)
             {
-                await Clients.Client(passengerConnectionId).SendAsync("RideCompleted");
+                await Clients.Client(passengerConnectionId).SendAsync(SignalREvents.RideCompleted);
             }
 
 
@@ -257,7 +301,7 @@ namespace Taxi_Booking.Hubs
 
             if (PassengerConnections.TryGetValue(ride.PassengerId, out var userConnectionId))
             {
-                await Clients.Client(userConnectionId).SendAsync("RideCancelledByDriver", new
+                await Clients.Client(userConnectionId).SendAsync(SignalREvents.RideCancelledByDriver, new
                 {
                     RideId = ride.Id,
                     Message = "Driver has cancelled your ride. Searching for another driver..."
@@ -293,7 +337,7 @@ namespace Taxi_Booking.Hubs
             
             int driverId = ride.DriverId.Value;
             string driverConnectionId = DriverConnections[driverId];
-            await Clients.Client(driverConnectionId).SendAsync("RideCancelledByPassenger", new
+            await Clients.Client(driverConnectionId).SendAsync(SignalREvents.RideCancelledByPassenger, new
             {
                 RideId = ride.Id,
                 Message = "Passenger has cancelled your ride"

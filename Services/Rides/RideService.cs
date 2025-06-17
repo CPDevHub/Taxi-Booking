@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Taxi_Booking.DTO;
-using Taxi_Booking.Models.Entities;
+using Taxi_Booking.Models;
 using Taxi_Booking.Repositories.Rides;
 
 namespace Taxi_Booking.Services.Rides

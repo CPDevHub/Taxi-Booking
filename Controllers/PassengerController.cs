@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using Taxi_Booking.Constants;
 using Taxi_Booking.Services.Rides;
 
 namespace Taxi_Booking.Controllers
 {
-    [Route("api/v1/passenger")]
+    
     [ApiController]
     public class PassengerController:ControllerBase
     {
@@ -14,7 +15,7 @@ namespace Taxi_Booking.Controllers
             _rideService = rideService;
         }
 
-        [HttpGet("history")]
+        [HttpGet(ApiRoutes.Passenger.History)]
         public async Task<IActionResult> GetHistory()
         {
             string passengerIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

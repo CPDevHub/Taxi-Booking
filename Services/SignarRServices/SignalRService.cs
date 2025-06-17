@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using Taxi_Booking.Helpers;
 using Taxi_Booking.Hubs;
-using Taxi_Booking.Models.Entities;
-using Taxi_Booking.Models.Enums;
+using Taxi_Booking.Models;
 using Taxi_Booking.Services.Drivers;
 
 namespace Taxi_Booking.Services.SignarRServices

@@ -1,6 +1,6 @@
 ﻿using Taxi_Booking.DTO;
 using Taxi_Booking.Exceptions;
-using Taxi_Booking.Models.Entities;
+using Taxi_Booking.Models;
 using Taxi_Booking.Repositories.Vehicles;
 using Taxi_Booking.Services.Passengers;
 

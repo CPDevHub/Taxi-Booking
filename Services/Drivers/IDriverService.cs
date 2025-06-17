@@ -1,6 +1,6 @@
-﻿using Taxi_Booking.DTO.Authentication;
-using Taxi_Booking.Models.Entities;
-using Taxi_Booking.Models.Enums;
+﻿using Taxi_Booking.DTO;
+using Taxi_Booking.DTO.Authentication;
+using Taxi_Booking.Models;
 
 namespace Taxi_Booking.Services.Drivers
 {
@@ -17,5 +17,12 @@ namespace Taxi_Booking.Services.Drivers
 
         public Task<Boolean> UpdateDriverLocation(int driverId, double latitude, double longitude);
         public Task<Boolean> UpdateDriver(Driver driver);
+
+        public Task<DriverDashboardDto> GetDashboardAsync(int driverId);
+        public Task<DriverDetailsDto> GetDetailsAsync(int driverId);
+        Task<bool> SubmitRatingAsync(int driverId, int rating);
+
+
+
     }
 }

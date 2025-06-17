@@ -1,6 +1,6 @@
 ﻿using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Taxi_Booking.Models.Responses
+namespace Taxi_Booking.Models
 {
     public class ApiResponse<T>
     {

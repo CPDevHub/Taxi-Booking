@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Taxi_Booking.Context;
 using Taxi_Booking.DTO.Authentication;
-using Taxi_Booking.Models.Entities;
+using Taxi_Booking.Models;
 
 namespace Taxi_Booking.Repositories.Passengers
 {

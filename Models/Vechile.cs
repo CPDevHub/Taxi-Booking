@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Taxi_Booking.Models.Enums;
 
-namespace Taxi_Booking.Models.Entities
+namespace Taxi_Booking.Models
 {
     public class Vehicle
     {

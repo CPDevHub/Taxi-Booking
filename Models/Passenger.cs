@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Taxi_Booking.Models.Entities
+namespace Taxi_Booking.Models
 {
     public class Passenger
     {

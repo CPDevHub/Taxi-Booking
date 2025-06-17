@@ -4,7 +4,7 @@ using System.Net;
 using System.Text.Json;
 using Taxi_Booking.Exceptions;
 using Taxi_Booking.Models;
-using Taxi_Booking.Models.Responses;
+using Taxi_Booking.Models;
 
 namespace Taxi_Booking.Middlewares
 {

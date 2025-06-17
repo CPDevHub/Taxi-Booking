@@ -1,8 +1,8 @@
 ﻿using Taxi_Booking.DTO.Authentication;
 using Taxi_Booking.Repositories.Passengers;
-using Taxi_Booking.Models.Entities;
 using Taxi_Booking.Exceptions;
 using Taxi_Booking.Helpers;
+using Taxi_Booking.Models;
 
 namespace Taxi_Booking.Services.Passengers
 {

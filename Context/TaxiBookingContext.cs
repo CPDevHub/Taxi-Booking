@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Taxi_Booking.Models.Entities;
+using Taxi_Booking.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Taxi_Booking.Context

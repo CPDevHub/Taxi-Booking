@@ -1,4 +1,4 @@
-﻿namespace Taxi_Booking.Models.Enums
+﻿namespace Taxi_Booking.Models
 {
     public enum VehicleType
     {

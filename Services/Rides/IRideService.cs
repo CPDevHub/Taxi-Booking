@@ -1,5 +1,5 @@
 ﻿using Taxi_Booking.DTO;
-using Taxi_Booking.Models.Entities;
+using Taxi_Booking.Models;
 
 namespace Taxi_Booking.Services.Rides
 {

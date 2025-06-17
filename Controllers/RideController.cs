@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using System.Security.Claims;
+using Taxi_Booking.Constants;
 using Taxi_Booking.DTO;
 using Taxi_Booking.Exceptions;
 using Taxi_Booking.Hubs;
-using Taxi_Booking.Models.Entities;
+using Taxi_Booking.Models;
 using Taxi_Booking.Services.Rides;
 using Taxi_Booking.Services.SignarRServices;
 
 namespace Taxi_Booking.Controllers
 {
-    [Route("api/v1/ride")]
     [ApiController]
     public class RideController:ControllerBase
     {
@@ -26,7 +26,7 @@ namespace Taxi_Booking.Controllers
             _signalrService = signalrService;
         }
 
-        [HttpPost("book")]
+        [HttpPost(ApiRoutes.Ride.BookRide)]
         public async Task<IActionResult> BookRide([FromBody] CreateRideRequestDto rideRequest)
         {
             
