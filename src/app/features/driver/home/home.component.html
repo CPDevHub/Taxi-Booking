@@ -2,7 +2,7 @@
 <div class="home-container">
   <div class="sidebar">
     <ng-container
-      *ngIf="rideRequests.length > 0 && !rideDetails; else requestList"
+      *ngIf="!rideDetails; else requestList"
     >
       <div class="ride-requests-container">
         <kendo-card class="ride-card" *ngFor="let request of rideRequests">
@@ -39,6 +39,9 @@
             </kendo-card-actions>
           </kendo-card-body>
         </kendo-card>
+
+        <p *ngIf="!rideRequests.length">No Requests Yet</p>
+        
       </div>
     </ng-container>
 
@@ -113,6 +116,8 @@
         latitude: rideDetails?.dropOffLocation?.latitude,
         longitude: rideDetails?.dropOffLocation?.longitude
       }"
+      [driverCoords]="driverCoords"
+      [rideStarted]="rideStarted"
     >
     </app-map>
   </div>

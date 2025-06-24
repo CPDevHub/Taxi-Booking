@@ -4,14 +4,21 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
+import { LoaderService } from '../services/loader.service';
+import { Injectable } from '@angular/core';
+import { ACCESS_TOKEN } from 'src/app/shared/constants/token';
 
+
+@Injectable() 
 export class CredentialInterceptor implements HttpInterceptor {
+  constructor(private loaderService: LoaderService) {}
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = sessionStorage.getItem('access_token') || '';
+    const token = sessionStorage.getItem(ACCESS_TOKEN) || '';
 
     let clonedRequest = req;
 
@@ -27,7 +34,12 @@ export class CredentialInterceptor implements HttpInterceptor {
         withCredentials: true,
       });
     }
+    this.loaderService.show();
 
-    return next.handle(clonedRequest);
+    return next.handle(clonedRequest).pipe(
+      finalize(() => {
+        this.loaderService.hide();
+      })
+    );
   }
 }

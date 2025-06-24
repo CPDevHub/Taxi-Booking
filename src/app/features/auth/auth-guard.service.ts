@@ -24,7 +24,6 @@ export class AuthGuardService implements CanActivate {
     | UrlTree {
     return this.authService.isLoggedIn().pipe(
       map((user: { isAuthenticated: boolean; role?: string }) => {
-        console.log(user)
         if (user.isAuthenticated && user.role === route.data['expectedRole'])
           return true;
         else {

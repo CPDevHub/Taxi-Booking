@@ -7,14 +7,15 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Console } from 'console';
+
+import { ToastrService } from 'ngx-toastr';
+import { MapComponent } from 'src/app/core/components/map/map.component';
 import { RideService } from 'src/app/core/services/ride.service';
 import { SignalrService } from 'src/app/core/services/signalrService.service';
 import { VehicleType } from 'src/app/shared/enums/vehicleType.enums';
 import { rideAcceptType } from 'src/app/shared/types/rideAccept.type';
 import { RideBookResponseType } from 'src/app/shared/types/rideBookResponse.type';
-import { rideDetailsType } from 'src/app/shared/types/rideDetails.type';
-import { RideRequestType } from 'src/app/shared/types/rideRequrest.type';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -31,7 +32,7 @@ export class SidebarComponent implements OnInit {
   dropOffLocation: any = null;
   rideResponse!: RideBookResponseType;
   rideCompleted: boolean = false;
-
+  
   @Input() rideDetails: rideAcceptType | null = null;
   @Output() cancelRideModal = new EventEmitter<void>();
 
@@ -41,14 +42,15 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private rideService: RideService,
-    private signalrService: SignalrService
+    private signalrService: SignalrService,
+    private toaster: ToastrService
   ) {}
 
   ngOnInit() {
     console.log('ride details:', this.rideDetails);
     this.signalrService.rideCompleted$.subscribe(() => {
       this.rideCompleted = true;
-      console.log(this.rideCompleted)
+      console.log(this.rideCompleted);
     });
   }
 
@@ -136,6 +138,14 @@ export class SidebarComponent implements OnInit {
   }
 
   bookRide() {
+    this.rideCompleted=false
+    if (
+      this.pickupLocation.latitude == this.dropOffLocation.latitude &&
+      this.pickupLocation.latitude == this.pickupLocation.longitude
+    ) {
+      this.toaster.warning('Pickup and DropOff location not be same');
+      return;
+    }
     this.rideService
       .bookRide({
         pickupLocation: this.pickupLocation,

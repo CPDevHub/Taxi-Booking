@@ -5,17 +5,15 @@ import { DriverDashboard } from 'src/app/shared/types/driverDashboard.type';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  driver!:DriverDashboard
-  constructor(private driverService:DriverService) { }
+  driver!: DriverDashboard;
+  constructor(private driverService: DriverService) {}
 
   ngOnInit(): void {
-    this.driverService.getDashboardData().subscribe((data:DriverDashboard)=>{
-      console.log(data)
-      this.driver=data;
-    })
+    this.driverService.getDashboardData().subscribe((data: DriverDashboard) => {
+      this.driver = data;
+    });
   }
-
 }

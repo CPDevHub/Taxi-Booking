@@ -47,7 +47,7 @@
   </ng-container>
 
   <ng-template #rideInfo>
-    <kendo-card class="ride-details-card">
+    <kendo-card class="ride-details-card" *ngIf="!rideCompleted">
       <kendo-card-header>
         <h3>🚖 Ride Details</h3>
       </kendo-card-header>

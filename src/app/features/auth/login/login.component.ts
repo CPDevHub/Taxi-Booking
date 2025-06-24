@@ -4,6 +4,8 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SignalrService } from 'src/app/core/services/signalrService.service';
+import { DRIVER, PASSENGER } from 'src/app/shared/constants/roles';
+import { ACCESS_TOKEN } from 'src/app/shared/constants/token';
 
 @Component({
   selector: 'app-login',
@@ -28,18 +30,22 @@ export class LoginComponent implements OnInit {
     });
 
     const url = this.router.url;
-    this.userType = url.includes('passenger') ? 'passenger' : 'driver';
+    this.userType = (
+      url.includes(PASSENGER.toLocaleLowerCase())
+        ? PASSENGER.toLocaleLowerCase()
+        : DRIVER.toLocaleLowerCase()
+    ) as 'passenger' | 'driver';
   }
 
   onLogin() {
     if (this.reactiveForm.valid) {
       this.authService.login(this.reactiveForm.value, this.userType).subscribe({
         next: (res: any) => {
-          if (this.userType === 'passenger')
+          if (this.userType === PASSENGER.toLocaleLowerCase())
             this.signarRService.loginPassenger(res.data.response.id);
           else this.signarRService.loginDriver(res.data.response.id);
 
-          sessionStorage.setItem('access_token', res.data.token);
+          sessionStorage.setItem(ACCESS_TOKEN, res.data.token);
           this.signarRService.connect();
           this.router.navigateByUrl(`${this.userType}`);
         },

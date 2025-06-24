@@ -21,3 +21,4 @@ export const AcceptRide = 'AcceptRide';
 export const RejectRide = 'RejectRide';
 export const CancelRideBeforeAcceptance = 'CancelRideBeforeAcceptance';
 export const UpdateStatus = 'UpdateStatus';
+export const CancelRideByPassenger = 'CancelRideByPassenger';

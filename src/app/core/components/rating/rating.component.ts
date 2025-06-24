@@ -13,9 +13,7 @@ export class RatingComponent {
   @Output() submitted = new EventEmitter();
   rating = 0;
 
-  constructor(private driverService: DriverService) {
-    console.log('Rating Component');
-  }
+  constructor(private driverService: DriverService) {}
 
   setRating(r: number) {
     this.rating = r;

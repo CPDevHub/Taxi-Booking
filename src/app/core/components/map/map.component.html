@@ -1,1 +1,10 @@
+<div>
+    <kendo-loader
+    *ngIf="isLoading"
+    [themeColor]="'primary'"
+    [type]="'infinite-spinner'"
+    [size]="'large'"
+    class="map-loader"
+  ></kendo-loader>
+</div>
 <div #mapViewNode class="map-view"></div>

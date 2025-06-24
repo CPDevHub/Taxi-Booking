@@ -5,6 +5,7 @@ import {
   AcceptRide,
   CancelRideBeforeAcceptance,
   CancelRideByDriver,
+  CancelRideByPassenger,
   CompleteRide,
   LoginDriver,
   LoginPassenger,
@@ -22,6 +23,7 @@ import {
   UpdateLocation,
   UpdateStatus,
 } from 'src/app/shared/constants/SignalREvents';
+import { ACCESS_TOKEN } from 'src/app/shared/constants/token';
 import { rideAcceptType } from 'src/app/shared/types/rideAccept.type';
 import { RideCancelType } from 'src/app/shared/types/rideCancel.type';
 import { rideDetailsType } from 'src/app/shared/types/rideDetails.type';
@@ -69,12 +71,12 @@ export class SignalrService {
   rideStart$ = this.rideStartSubject.asObservable();
 
   connect(): void {
-    const token = sessionStorage.getItem('access_token');
+    const token = sessionStorage.getItem(ACCESS_TOKEN);
     if (!token) return;
     this.hubConnection = new HubConnectionBuilder()
       .withUrl('https://localhost:7134/taxiBookingHub', {
         accessTokenFactory: () => {
-          return sessionStorage.getItem('access_token') || '';
+          return sessionStorage.getItem(ACCESS_TOKEN) || '';
         },
       })
       .withAutomaticReconnect()
@@ -105,56 +107,46 @@ export class SignalrService {
     });
 
     this.hubConnection.on(ReceiveRideRequest, (ride: RideRequestType) => {
-      console.log('Ride request received:', ride);
       this.rideRequestSubject.next(ride);
     });
 
     this.hubConnection.on(RideAcceptedUserNotify, (data: rideAcceptType) => {
-      console.log('Ride accepted:', data);
       this.rideAcceptPassengerNotifySubject.next(data);
     });
 
     this.hubConnection.on(RideStart, () => {
-      console.log('Ride started');
       this.rideStartSubject.next();
     });
 
     this.hubConnection.on(RideCompleted, () => {
-      console.log('ride completed');
       this.rideCompletedSubject.next();
     });
 
     this.hubConnection.on(RideAcceptedDriverNotify, (data: rideDetailsType) => {
-      console.log('Ride accepted:', data);
       this.rideAcceptDriverNotifySubject.next(data);
     });
 
     this.hubConnection.on(RideAlreadyAccepted, (data: { rideId: number }) => {
-      console.log('Ride already accepted:', data);
       this.rideAlreadyAcceptedSubject.next(data.rideId);
     });
 
     this.hubConnection.on(RideCancelledByDriver, (data: RideCancelType) => {
-      console.log('Ride cancelled by driver');
       this.rideCancelledByDriverSubject.next(data);
     });
 
     this.hubConnection.on(RideCancelledByPassenger, (data: RideCancelType) => {
-      console.log('Ride cancelled by Passenger');
       this.rideCancelledByPassengerSubject.next(data);
     });
 
     this.hubConnection.on(
       RideCancelledByPassengerBeforeAccept,
       (data: RideCancelType) => {
-        console.log(data);
         this.rideCancelledByPassengerBeforeAcceptSubject.next(data);
       }
     );
   }
 
   async updateLocation(lat: number, lng: number) {
-    console.log(lat, lng);
     await this.hubConnection.invoke(UpdateLocation, {
       latitude: lat,
       longitude: lng,
@@ -175,7 +167,7 @@ export class SignalrService {
   async cancelRideByPassenger(data: { rideId: number; reason: string }) {
     console.log(data.rideId, data.reason);
     await this.hubConnection.invoke(
-      'CancelRideByPassenger',
+      CancelRideByPassenger,
       data.rideId,
       data.reason
     );
@@ -201,7 +193,6 @@ export class SignalrService {
   }
 
   updateStatus(status: 'Available' | 'Unavailable') {
-    console.log(status);
     this.hubConnection.invoke<void>(UpdateStatus, status);
   }
 }

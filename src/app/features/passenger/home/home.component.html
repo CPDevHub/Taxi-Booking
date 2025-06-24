@@ -11,7 +11,7 @@
 
   <!-- Right Map Section -->
   <div class="map-section">
-    <app-map [pickupCoords]="pickupCoords" [dropoffCoords]="dropoffCoords">
+    <app-map [pickupCoords]="pickupCoords" [dropoffCoords]="dropoffCoords" [driverCoords]="driverCoords" [rideStarted]="rideStarted">
     </app-map>
   </div>
 </div>
@@ -23,4 +23,4 @@
   (submit)="rideCancelConfirm($event)"
 ></app-modal>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
