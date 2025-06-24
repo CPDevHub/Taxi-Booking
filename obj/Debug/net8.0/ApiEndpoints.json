@@ -76,7 +76,7 @@
   {
     "ContainingType": "Taxi_Booking.Controllers.DriverController",
     "Method": "GetDashboardData",
-    "RelativePath": "api/v1/driver/api/v1/driver/dashboard",
+    "RelativePath": "api/v1/driver/dashboard",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -86,7 +86,7 @@
   {
     "ContainingType": "Taxi_Booking.Controllers.DriverController",
     "Method": "GetHistory",
-    "RelativePath": "api/v1/driver/api/v1/driver/history",
+    "RelativePath": "api/v1/driver/history",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -95,8 +95,24 @@
   },
   {
     "ContainingType": "Taxi_Booking.Controllers.DriverController",
+    "Method": "GetCurrentDriverLocation",
+    "RelativePath": "api/v1/driver/location/{driverId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "driverId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Taxi_Booking.Controllers.DriverController",
     "Method": "SubmitRating",
-    "RelativePath": "api/v1/driver/api/v1/driver/rating/{driverId}",
+    "RelativePath": "api/v1/driver/rating/{driverId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -117,7 +133,7 @@
   {
     "ContainingType": "Taxi_Booking.Controllers.DriverController",
     "Method": "GetCurrentDetails",
-    "RelativePath": "api/v1/driver/api/v1/driver/settings",
+    "RelativePath": "api/v1/driver/settings",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

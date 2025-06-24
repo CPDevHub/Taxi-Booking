@@ -12,6 +12,7 @@ namespace Taxi_Booking.Constants
             public const string Settings = Base + "driver/settings";
             public const string Dashboard = Base + "driver/dashboard";
             public const string History = Base + "driver/history";
+            public const string location = Base + "driver/location/{driverId}";
         }
         public static class Passenger
         {

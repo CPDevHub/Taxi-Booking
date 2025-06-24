@@ -73,8 +73,8 @@ namespace Taxi_Booking.Repositories.Drivers
             if (driver == null)
                 return false;
             var currentRating = driver.Rating ?? 0;
-            driver.Rating = (currentRating*(driver.TotalRides-1) + rating) / driver.TotalRides;
-           await _taxiContext.SaveChangesAsync();
+            driver.Rating = (currentRating * (driver.TotalRides - 1) + rating) / driver.TotalRides;
+            await _taxiContext.SaveChangesAsync();
             return true;
         }
 
@@ -112,11 +112,23 @@ namespace Taxi_Booking.Repositories.Drivers
 
             return new DriverDetailsDto
             {
-                Email=driver.Email,
-                ContactNumber=driver.ContactNumber,
+                Email = driver.Email,
+                ContactNumber = driver.ContactNumber,
                 Status = driver.Status.ToString()
             };
 
+        }
+
+        public async Task<LatLng> GetCurrentDriverLocationAsync(int driverId)
+        {
+            var driver = await _taxiContext.Driver
+          .FirstOrDefaultAsync(d => d.Id == driverId);
+
+            return new LatLng
+            {
+                Latitude = driver.Location.Latitude,
+                Longitude = driver.Location.Longitude
+            };
         }
     }
 }

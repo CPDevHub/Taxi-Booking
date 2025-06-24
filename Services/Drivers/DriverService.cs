@@ -94,5 +94,10 @@ namespace Taxi_Booking.Services.Drivers
             return await _driverRepository.SubmitRatingAsync(driverId, rating);
             
         }
+
+        public async Task<LatLng> GetCurrentDriverLocationAsync(int driverId)
+        {
+            return await _driverRepository.GetCurrentDriverLocationAsync(driverId);
+        }
     }
 }

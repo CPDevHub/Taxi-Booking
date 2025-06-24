@@ -8,7 +8,6 @@ using Taxi_Booking.Services.Rides;
 namespace Taxi_Booking.Controllers
 {
 
-    [Route("api/v1/driver")]
     [ApiController]
     public class DriverController:ControllerBase
     {
@@ -65,6 +64,17 @@ namespace Taxi_Booking.Controllers
                 return NotFound("Driver not found");
 
             return Ok(new { message = "Rating submitted successfully" });
+        }
+
+        [HttpGet(ApiRoutes.Driver.location)]
+        public async Task<IActionResult> GetCurrentDriverLocation(int driverId)
+        {
+            var location = await _driverService.GetCurrentDriverLocationAsync(driverId);
+
+            if (location == null)
+                return NotFound("Driver location not found.");
+
+            return Ok(location);
         }
     }
 }

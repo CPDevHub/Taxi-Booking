@@ -22,6 +22,8 @@ namespace Taxi_Booking.Services.Drivers
         public Task<DriverDetailsDto> GetDetailsAsync(int driverId);
         Task<bool> SubmitRatingAsync(int driverId, int rating);
 
+        Task<LatLng> GetCurrentDriverLocationAsync(int driverId);
+
 
 
     }
